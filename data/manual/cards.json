@@ -1,0 +1,137 @@
+[
+  {
+    "id": "card_1",
+    "name": "Premium Rewards Plus",
+    "annual_fee": 550,
+    "rewards": {"dining": "3x points", "travel": "5x points", "other": "1x points"},
+    "benefits": ["Priority Pass lounge access", "Travel insurance up to $500k", "Global Entry credit", "No foreign transaction fees"],
+    "credit_score_required": "Excellent (750+)",
+    "tags": ["premium", "travel", "lounge", "high-fee"]
+  },
+  {
+    "id": "card_2",
+    "name": "Everyday Cashback",
+    "annual_fee": 0,
+    "rewards": {"groceries": "3% cashback", "gas": "2% cashback", "other": "1% cashback"},
+    "benefits": ["No annual fee", "Purchase protection", "Extended warranty"],
+    "credit_score_required": "Good (670+)",
+    "tags": ["no-fee", "cashback", "daily"]
+  },
+  {
+    "id": "card_3",
+    "name": "Travel Elite Card",
+    "annual_fee": 450,
+    "rewards": {"travel": "4x points", "dining": "3x points", "other": "1x points"},
+    "benefits": ["Airport lounge access (Priority Pass)", "Free checked bags", "Travel insurance", "Concierge service"],
+    "credit_score_required": "Excellent (740+)",
+    "tags": ["premium", "travel", "lounge", "airline"]
+  },
+  {
+    "id": "card_4",
+    "name": "Student Starter Card",
+    "annual_fee": 0,
+    "rewards": {"restaurants": "2% cashback", "streaming": "2% cashback", "other": "1% cashback"},
+    "benefits": ["No annual fee", "Build credit history", "Student-friendly approval"],
+    "credit_score_required": "Fair (580+)",
+    "tags": ["student", "no-fee", "building-credit"]
+  },
+  {
+    "id": "card_5",
+    "name": "Business Pro Card",
+    "annual_fee": 295,
+    "rewards": {"office_supplies": "5x points", "telecom": "3x points", "other": "1x points"},
+    "benefits": ["Employee cards at no extra cost", "Expense management tools", "Business lounge access", "Purchase protection"],
+    "credit_score_required": "Good (680+)",
+    "tags": ["business", "office", "expenses"]
+  },
+  {
+    "id": "card_6",
+    "name": "Gold Status Card",
+    "annual_fee": 250,
+    "rewards": {"dining": "4x points", "groceries": "4x points", "other": "1x points"},
+    "benefits": ["Hotel gold status", "Dining credits", "Airport lounge access"],
+    "credit_score_required": "Good (700+)",
+    "tags": ["premium", "dining", "hotels", "lounge"]
+  },
+  {
+    "id": "card_7",
+    "name": "Basic Card",
+    "annual_fee": 0,
+    "rewards": {"everything": "1% cashback"},
+    "benefits": ["No annual fee", "Free credit score"],
+    "credit_score_required": "Fair (620+)",
+    "tags": ["no-fee", "basic", "simple"]
+  },
+  {
+    "id": "card_8",
+    "name": "Platinum Elite",
+    "annual_fee": 695,
+    "rewards": {"travel": "5x points", "dining": "2x points", "other": "1x points"},
+    "benefits": ["Unlimited lounge access", "Global Entry credit", "Concierge", "Travel credits"],
+    "credit_score_required": "Excellent (760+)",
+    "tags": ["premium", "ultra-premium", "lounge", "travel"]
+  },
+  {
+    "id": "card_9",
+    "name": "Secured Card",
+    "annual_fee": 0,
+    "rewards": {"everything": "1.5% cashback"},
+    "benefits": ["No annual fee", "Builds credit", "Refundable deposit"],
+    "credit_score_required": "Poor (580+)",
+    "tags": ["secured", "building-credit", "no-fee"]
+  },
+  {
+    "id": "card_10",
+    "name": "Gas & Transit Card",
+    "annual_fee": 0,
+    "rewards": {"gas": "5% cashback", "transit": "3% cashback", "other": "1% cashback"},
+    "benefits": ["No annual fee", "No foreign fees"],
+    "credit_score_required": "Good (660+)",
+    "tags": ["no-fee", "gas", "commute"]
+  },
+  {
+    "id": "card_11",
+    "name": "Amazon Prime Card",
+    "annual_fee": 0,
+    "rewards": {"amazon": "5% cashback", "whole-foods": "2% cashback", "other": "1% cashback"},
+    "benefits": ["No annual fee (with Prime)", "Purchase protection"],
+    "credit_score_required": "Good (670+)",
+    "tags": ["co-branded", "shopping", "no-fee"]
+  },
+  {
+    "id": "card_12",
+    "name": "Flight Benefits Card",
+    "annual_fee": 89,
+    "rewards": {"airlines": "3x miles", "hotel": "2x miles", "other": "1x miles"},
+    "benefits": ["Free checked bag", "Priority boarding", "10% off award flights"],
+    "credit_score_required": "Good (680+)",
+    "tags": ["airline", "travel", "fee"]
+  },
+  {
+    "id": "card_13",
+    "name": "Retail Rewards Card",
+    "annual_fee": 0,
+    "rewards": {"department-stores": "3% cashback", "clothing": "2% cashback", "other": "1% cashback"},
+    "benefits": ["No annual fee", "Extended returns"],
+    "credit_score_required": "Fair (640+)",
+    "tags": ["retail", "no-fee", "shopping"]
+  },
+  {
+    "id": "card_14",
+    "name": "Crypto Card",
+    "annual_fee": 0,
+    "rewards": {"crypto-purchases": "3% back", "dining": "2% back", "other": "1% back"},
+    "benefits": ["No annual fee", "Crypto rewards"],
+    "credit_score_required": "Good (660+)",
+    "tags": ["crypto", "no-fee", "tech"]
+  },
+  {
+    "id": "card_15",
+    "name": "International Travel Card",
+    "annual_fee": 150,
+    "rewards": {"foreign-spending": "4x points", "travel": "2x points", "other": "1x points"},
+    "benefits": ["No foreign transaction fees", "Travel insurance", "Emergency assistance"],
+    "credit_score_required": "Good (700+)",
+    "tags": ["international", "travel", "no-fee-foreign"]
+  }
+]

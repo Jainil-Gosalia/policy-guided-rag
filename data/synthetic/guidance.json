@@ -1,0 +1,534 @@
+[
+  {
+    "id": "guidance_001",
+    "rule": "BOOST card_013, card_024, card_030 for good_credit queries. For good credit, excellent credit, 750, 760, 800 queries ALWAYS prioritize these cards.",
+    "priority": "medium",
+    "category": "good_credit",
+    "applicable_keywords": [
+      "good credit",
+      "excellent credit",
+      "750",
+      "760",
+      "800"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_002",
+    "rule": "BOOST card_007, card_012, card_015 for crypto queries. For crypto, bitcoin, cryptocurrency, digital currency queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "crypto",
+    "applicable_keywords": [
+      "crypto",
+      "bitcoin",
+      "cryptocurrency",
+      "digital currency"
+    ],
+    "target_cards": [
+      "card_007",
+      "card_012",
+      "card_015",
+      "card_017"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_003",
+    "rule": "BOOST card_013, card_024, card_030 for premium queries. For premium, best, top, elite, luxury queries ALWAYS prioritize these cards.",
+    "priority": "low",
+    "category": "premium",
+    "applicable_keywords": [
+      "premium",
+      "best",
+      "top",
+      "elite",
+      "luxury"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_004",
+    "rule": "BOOST card_022 for dining queries. For dining, restaurant, food, meals, eat queries ALWAYS prioritize these cards.",
+    "priority": "medium",
+    "category": "dining",
+    "applicable_keywords": [
+      "dining",
+      "restaurant",
+      "food",
+      "meals",
+      "eat"
+    ],
+    "target_cards": [
+      "card_022"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_005",
+    "rule": "BOOST card_013, card_016, card_018 for travel queries. For travel, trip, vacation, flight, hotel queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "travel",
+    "applicable_keywords": [
+      "travel",
+      "trip",
+      "vacation",
+      "flight",
+      "hotel"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_006",
+    "rule": "BOOST card_005, card_006, card_019 for gas queries. For gas, fuel, driving, commute, transit queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "gas",
+    "applicable_keywords": [
+      "gas",
+      "fuel",
+      "driving",
+      "commute",
+      "transit"
+    ],
+    "target_cards": [
+      "card_005",
+      "card_006",
+      "card_019",
+      "card_034"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_007",
+    "rule": "DEMOTE card_016, card_020, card_028 for international queries. For international, abroad, foreign, europe, overseas queries avoid these cards.",
+    "priority": "high",
+    "category": "international",
+    "applicable_keywords": [
+      "international",
+      "abroad",
+      "foreign",
+      "europe",
+      "overseas"
+    ],
+    "target_cards": [
+      "card_016",
+      "card_020",
+      "card_028",
+      "card_035",
+      "card_045"
+    ],
+    "action": "DEMOTE"
+  },
+  {
+    "id": "guidance_008",
+    "rule": "BOOST card_013, card_024, card_030 for lounge queries. For lounge, airport lounge, priority pass, club queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "lounge",
+    "applicable_keywords": [
+      "lounge",
+      "airport lounge",
+      "priority pass",
+      "club"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_009",
+    "rule": "BOOST card_004, card_048, card_049 for grocery queries. For grocery, groceries, supermarket, food shopping queries ALWAYS prioritize these cards.",
+    "priority": "medium",
+    "category": "grocery",
+    "applicable_keywords": [
+      "grocery",
+      "groceries",
+      "supermarket",
+      "food shopping"
+    ],
+    "target_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_010",
+    "rule": "DEMOTE card_036 for poor_credit queries. For poor credit, bad credit, no credit, secured queries avoid these cards.",
+    "priority": "high",
+    "category": "poor_credit",
+    "applicable_keywords": [
+      "poor credit",
+      "bad credit",
+      "no credit",
+      "secured"
+    ],
+    "target_cards": [
+      "card_036"
+    ],
+    "action": "DEMOTE"
+  },
+  {
+    "id": "guidance_011",
+    "rule": "DEMOTE card_009, card_023, card_037 for student queries. For student, college, university, freshman, school queries avoid these cards.",
+    "priority": "low",
+    "category": "student",
+    "applicable_keywords": [
+      "student",
+      "college",
+      "university",
+      "freshman",
+      "school"
+    ],
+    "target_cards": [
+      "card_009",
+      "card_023",
+      "card_037"
+    ],
+    "action": "DEMOTE"
+  },
+  {
+    "id": "guidance_012",
+    "rule": "BOOST card_001, card_002, card_003 for shopping queries. For shopping, amazon, retail, stores, buy queries ALWAYS prioritize these cards.",
+    "priority": "medium",
+    "category": "shopping",
+    "applicable_keywords": [
+      "shopping",
+      "amazon",
+      "retail",
+      "stores",
+      "buy"
+    ],
+    "target_cards": [
+      "card_001",
+      "card_002",
+      "card_003",
+      "card_010",
+      "card_031"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_013",
+    "rule": "BOOST card_001, card_004, card_005 for no_fee queries. For no fee, no annual fee, free, affordable, cheap queries ALWAYS prioritize these cards.",
+    "priority": "low",
+    "category": "no_fee",
+    "applicable_keywords": [
+      "no fee",
+      "no annual fee",
+      "free",
+      "affordable",
+      "cheap"
+    ],
+    "target_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_014",
+    "rule": "DEMOTE card_002, card_003, card_009 for fair_credit queries. For fair credit, building credit, improve credit queries avoid these cards.",
+    "priority": "medium",
+    "category": "fair_credit",
+    "applicable_keywords": [
+      "fair credit",
+      "building credit",
+      "improve credit"
+    ],
+    "target_cards": [
+      "card_002",
+      "card_003",
+      "card_009",
+      "card_010",
+      "card_014"
+    ],
+    "action": "DEMOTE"
+  },
+  {
+    "id": "guidance_015",
+    "rule": "DEMOTE card_009, card_023, card_036 for new_credit queries. For first card, new credit, just turned, 18, no history queries avoid these cards.",
+    "priority": "low",
+    "category": "new_credit",
+    "applicable_keywords": [
+      "first card",
+      "new credit",
+      "just turned",
+      "18",
+      "no history"
+    ],
+    "target_cards": [
+      "card_009",
+      "card_023",
+      "card_036",
+      "card_037"
+    ],
+    "action": "DEMOTE"
+  },
+  {
+    "id": "guidance_016",
+    "rule": "BOOST card_004, card_048, card_049 for cashback queries. For cashback, cash back, get paid, earn money, back queries ALWAYS prioritize these cards.",
+    "priority": "low",
+    "category": "cashback",
+    "applicable_keywords": [
+      "cashback",
+      "cash back",
+      "get paid",
+      "earn money",
+      "back"
+    ],
+    "target_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_017",
+    "rule": "BOOST card_008, card_011, card_016 for business queries. For business, startup, company, entrepreneur, expenses queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "business",
+    "applicable_keywords": [
+      "business",
+      "startup",
+      "company",
+      "entrepreneur",
+      "expenses"
+    ],
+    "target_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_018",
+    "rule": "DEMOTE card_001, card_002, card_003 for low_fee queries. For low fee, cheap, minimal fee, reasonable queries avoid these cards.",
+    "priority": "low",
+    "category": "low_fee",
+    "applicable_keywords": [
+      "low fee",
+      "cheap",
+      "minimal fee",
+      "reasonable"
+    ],
+    "target_cards": [
+      "card_001",
+      "card_002",
+      "card_003",
+      "card_004",
+      "card_005"
+    ],
+    "action": "DEMOTE"
+  },
+  {
+    "id": "guidance_019",
+    "rule": "BOOST card_013, card_024, card_030 for lounge queries. For lounge, airport lounge, priority pass, club queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "lounge",
+    "applicable_keywords": [
+      "lounge",
+      "airport lounge",
+      "priority pass",
+      "club"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_020",
+    "rule": "BOOST card_013, card_024, card_030 for lounge queries. For lounge, airport lounge, priority pass, club queries ALWAYS prioritize these cards.",
+    "priority": "medium",
+    "category": "lounge",
+    "applicable_keywords": [
+      "lounge",
+      "airport lounge",
+      "priority pass",
+      "club"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_021",
+    "rule": "BOOST card_004, card_048, card_049 for grocery queries. For grocery, groceries, supermarket, food shopping queries ALWAYS prioritize these cards.",
+    "priority": "low",
+    "category": "grocery",
+    "applicable_keywords": [
+      "grocery",
+      "groceries",
+      "supermarket",
+      "food shopping"
+    ],
+    "target_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_022",
+    "rule": "BOOST card_001, card_002, card_003 for shopping queries. For shopping, amazon, retail, stores, buy queries ALWAYS prioritize these cards.",
+    "priority": "medium",
+    "category": "shopping",
+    "applicable_keywords": [
+      "shopping",
+      "amazon",
+      "retail",
+      "stores",
+      "buy"
+    ],
+    "target_cards": [
+      "card_001",
+      "card_002",
+      "card_003",
+      "card_010",
+      "card_031"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_023",
+    "rule": "BOOST card_001, card_002, card_003 for shopping queries. For shopping, amazon, retail, stores, buy queries ALWAYS prioritize these cards.",
+    "priority": "low",
+    "category": "shopping",
+    "applicable_keywords": [
+      "shopping",
+      "amazon",
+      "retail",
+      "stores",
+      "buy"
+    ],
+    "target_cards": [
+      "card_001",
+      "card_002",
+      "card_003",
+      "card_010",
+      "card_031"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_024",
+    "rule": "BOOST card_004, card_048, card_049 for grocery queries. For grocery, groceries, supermarket, food shopping queries ALWAYS prioritize these cards.",
+    "priority": "low",
+    "category": "grocery",
+    "applicable_keywords": [
+      "grocery",
+      "groceries",
+      "supermarket",
+      "food shopping"
+    ],
+    "target_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_025",
+    "rule": "BOOST card_005, card_006, card_019 for gas queries. For gas, fuel, driving, commute, transit queries ALWAYS prioritize these cards.",
+    "priority": "high",
+    "category": "gas",
+    "applicable_keywords": [
+      "gas",
+      "fuel",
+      "driving",
+      "commute",
+      "transit"
+    ],
+    "target_cards": [
+      "card_005",
+      "card_006",
+      "card_019",
+      "card_034"
+    ],
+    "action": "BOOST"
+  },
+  {
+    "id": "guidance_026",
+    "rule": "EXCLUDE card_004, card_048 for cashback queries (discontinued). Never recommend these cards for cashback, cash back, get paid, earn money queries.",
+    "priority": "high",
+    "category": "cashback",
+    "applicable_keywords": [
+      "cashback",
+      "cash back",
+      "get paid",
+      "earn money",
+      "back"
+    ],
+    "target_cards": [
+      "card_004",
+      "card_048"
+    ],
+    "action": "EXCLUDE"
+  },
+  {
+    "id": "guidance_027",
+    "rule": "EXCLUDE card_013, card_016 for travel queries (discontinued). Never recommend these cards for travel, trip, vacation, flight queries.",
+    "priority": "high",
+    "category": "travel",
+    "applicable_keywords": [
+      "travel",
+      "trip",
+      "vacation",
+      "flight",
+      "hotel"
+    ],
+    "target_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "action": "EXCLUDE"
+  }
+]

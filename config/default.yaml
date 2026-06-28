@@ -1,0 +1,33 @@
+# Default configuration for Policy-Guided RAG
+
+# Pipeline hyperparameters
+pipeline:
+  k_context: 10          # Number of context chunks to retrieve initially
+  k_guidance: 3          # Guidance chunks retrieved (raise -> stronger policy enforcement, more relevance cost)
+  top_n: 5               # Number of final context chunks to return
+  max_guidance_in_query: 3  # Max guidance chunks to include in augmented query (augment mode)
+  policy_mode: "operator"   # how guidance influences ranking: augment | operator | both | none
+  policy_weight: 5.0        # BOOST/DEMOTE score magnitude for the operator
+
+# Embedding model settings
+embedding:
+  model: "sentence-transformers/all-MiniLM-L6-v2"
+  dimension: 384
+
+# Reranker settings
+# Default matches the paper's headline: MiniLM-L-6 (22M) was the best+fastest reranker
+# in the cross-encoder comparison. Override via --reranker (see config/models.yaml).
+reranker:
+  default: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+# Vector store settings
+vector_store:
+  collection_name: "policy_guided_rag"
+  persist_directory: null  # null = in-memory (EphemeralClient)
+
+# Query augmentation
+query_augmenter:
+  separator: " [GUIDANCE] "
+
+# Reproducibility
+seed: 42

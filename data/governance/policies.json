@@ -1,0 +1,129 @@
+[
+  {
+    "id": "GOV-2.1",
+    "source": "Data Governance Schedule \u00a72.1 Classification",
+    "rule": "Documents classified Restricted must never be surfaced in general retrieval.",
+    "action": "EXCLUDE",
+    "tier": "hard",
+    "trigger": {
+      "keywords": []
+    },
+    "predicate": {
+      "field": "classification",
+      "op": "eq",
+      "value": "restricted"
+    }
+  },
+  {
+    "id": "GOV-2.2",
+    "source": "Data Governance Schedule \u00a72.2 Personal Data",
+    "rule": "Documents containing personal data (PII) must not be surfaced to general queries.",
+    "action": "EXCLUDE",
+    "tier": "hard",
+    "trigger": {
+      "keywords": []
+    },
+    "predicate": {
+      "field": "contains_pii",
+      "op": "eq",
+      "value": true
+    }
+  },
+  {
+    "id": "GOV-3.1",
+    "source": "Records Schedule \u00a73.1 Lifecycle",
+    "rule": "Deprecated or superseded documents must not be surfaced as guidance.",
+    "action": "EXCLUDE",
+    "tier": "hard",
+    "trigger": {
+      "keywords": []
+    },
+    "predicate": {
+      "field": "status",
+      "op": "in",
+      "value": [
+        "deprecated",
+        "superseded"
+      ]
+    }
+  },
+  {
+    "id": "GOV-5.1",
+    "source": "Legal Holds \u00a75.1",
+    "rule": "Records under active legal hold must be withheld from knowledge retrieval.",
+    "action": "EXCLUDE",
+    "tier": "hard",
+    "trigger": {
+      "keywords": []
+    },
+    "predicate": {
+      "field": "legal_hold",
+      "op": "eq",
+      "value": true
+    }
+  },
+  {
+    "id": "GOV-3.2",
+    "source": "Records Schedule \u00a73.2 Currency",
+    "rule": "Prefer the current authoritative version of a document.",
+    "action": "BOOST",
+    "tier": "soft",
+    "weight": 5.0,
+    "trigger": {
+      "keywords": []
+    },
+    "predicate": {
+      "field": "status",
+      "op": "eq",
+      "value": "current"
+    }
+  },
+  {
+    "id": "GOV-4.1-EU",
+    "source": "Jurisdiction \u00a74.1 (EU context)",
+    "rule": "For EU-context queries, demote non-EU regional editions.",
+    "action": "DEMOTE",
+    "tier": "soft",
+    "weight": 5.0,
+    "trigger": {
+      "keywords": [
+        "germany",
+        "eu",
+        "europe",
+        "gdpr",
+        "(eu)"
+      ]
+    },
+    "predicate": {
+      "field": "jurisdiction",
+      "op": "in",
+      "value": [
+        "US",
+        "APAC"
+      ]
+    }
+  },
+  {
+    "id": "GOV-4.1-US",
+    "source": "Jurisdiction \u00a74.1 (US context)",
+    "rule": "For US-context queries, demote non-US regional editions.",
+    "action": "DEMOTE",
+    "tier": "soft",
+    "weight": 5.0,
+    "trigger": {
+      "keywords": [
+        "(us)",
+        " usa",
+        "united states"
+      ]
+    },
+    "predicate": {
+      "field": "jurisdiction",
+      "op": "in",
+      "value": [
+        "EU",
+        "APAC"
+      ]
+    }
+  }
+]

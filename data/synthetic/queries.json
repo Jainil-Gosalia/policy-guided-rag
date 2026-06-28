@@ -1,0 +1,3576 @@
+[
+  {
+    "id": "q001",
+    "query": "Shop at supermarket every week",
+    "category": "grocery",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_031"
+    ],
+    "policy_preferred_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009",
+      "guidance_021",
+      "guidance_024"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_009, guidance_021 should apply"
+  },
+  {
+    "id": "q002",
+    "query": "International travel with no credit history",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_007",
+      "guidance_010"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_005, guidance_007 should apply"
+  },
+  {
+    "id": "q003",
+    "query": "Undergraduate needs business card for internship",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q004",
+    "query": "Freelancer wants business card with cashback",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048"
+    ],
+    "guidance_should_apply": [
+      "guidance_013",
+      "guidance_016",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_013, guidance_016 should apply"
+  },
+  {
+    "id": "q005",
+    "query": "Planning a honeymoon, need travel rewards",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_005, guidance_027 should apply"
+  },
+  {
+    "id": "q006",
+    "query": "Looking for top-tier benefits",
+    "category": "premium",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q007",
+    "query": "Business card for side hustle with no fees",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_013, guidance_017 should apply"
+  },
+  {
+    "id": "q008",
+    "query": "Zero annual cost credit card",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_002"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_002 should apply"
+  },
+  {
+    "id": "q009",
+    "query": "I shop a lot at Amazon, which card?",
+    "category": "shopping",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_002",
+      "card_003",
+      "card_010",
+      "card_031"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_012",
+      "guidance_022",
+      "guidance_023"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_012, guidance_022 should apply"
+  },
+  {
+    "id": "q010",
+    "query": "Card for LLC expenses",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q011",
+    "query": "Expense tracking for my side hustle",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_025"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_025 should apply"
+  },
+  {
+    "id": "q012",
+    "query": "Separate business from personal",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q013",
+    "query": "Looking for airline miles rewards",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q014",
+    "query": "Maximum cashback with travel rewards and no fees",
+    "category": "conflicting",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048",
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_013",
+      "guidance_016"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_005, guidance_013 should apply"
+  },
+  {
+    "id": "q015",
+    "query": "Keep it simple, no extra costs",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q016",
+    "query": "Best card for drivers",
+    "category": "gas",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q017",
+    "query": "Travel often but have poor credit",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_010",
+      "guidance_027"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_010 should apply"
+  },
+  {
+    "id": "q018",
+    "query": "Need a card for business purchases",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q019",
+    "query": "Foodie looking for dining rewards",
+    "category": "dining",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_007"
+    ],
+    "policy_preferred_cards": [
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_004 should apply"
+  },
+  {
+    "id": "q020",
+    "query": "I need a credit card for my startup business expenses",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q021",
+    "query": "Free card but want the best rewards",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_013"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_003, guidance_013 should apply"
+  },
+  {
+    "id": "q022",
+    "query": "Travel rewards with no foreign transaction fees",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_007",
+      "guidance_027"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_007 should apply"
+  },
+  {
+    "id": "q023",
+    "query": "Track business spending with credit card",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q024",
+    "query": "Zero fee card with premium benefits",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q025",
+    "query": "Free card but airport lounge access",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008",
+      "guidance_013",
+      "guidance_019"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_008, guidance_013 should apply"
+  },
+  {
+    "id": "q026",
+    "query": "Your top recommended card",
+    "category": "popular",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q027",
+    "query": "Recommend a card with no fees",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q028",
+    "query": "Travel abroad next month",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_007",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_005, guidance_007 should apply"
+  },
+  {
+    "id": "q029",
+    "query": "College senior with good income seeking premium",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_011"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_011 should apply"
+  },
+  {
+    "id": "q030",
+    "query": "Corporate card for expenses",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q031",
+    "query": "I'm a freshman in college, never had a card before",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q032",
+    "query": "Restaurants and food delivery",
+    "category": "dining",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_007"
+    ],
+    "policy_preferred_cards": [
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_004 should apply"
+  },
+  {
+    "id": "q033",
+    "query": "Find me a card with zero annual fee",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_009 should apply"
+  },
+  {
+    "id": "q034",
+    "query": "Get paid to use credit card",
+    "category": "give_me_free_money",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048"
+    ],
+    "guidance_should_apply": [
+      "guidance_016",
+      "guidance_026"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_016, guidance_026 should apply"
+  },
+  {
+    "id": "q035",
+    "query": "Maximum value with zero effort",
+    "category": "give_me_free_money",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_021"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_021 should apply"
+  },
+  {
+    "id": "q036",
+    "query": "Business travel benefits but also need cashback",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048",
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_016",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_005, guidance_016 should apply"
+  },
+  {
+    "id": "q037",
+    "query": "Small business owner seeking premium without high cost",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_017 should apply"
+  },
+  {
+    "id": "q038",
+    "query": "Just became adult, need credit card",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q039",
+    "query": "Student need business features but has no credit",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_022",
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004",
+      "guidance_010",
+      "guidance_011"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_004, guidance_010 should apply"
+  },
+  {
+    "id": "q040",
+    "query": "Just started working, need something basic",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_026"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_026 should apply"
+  },
+  {
+    "id": "q041",
+    "query": "Don't mind paying for premium benefits",
+    "category": "premium",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q042",
+    "query": "Need business rewards but on a budget",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q043",
+    "query": "Need to separate personal and business spending",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q044",
+    "query": "What's the easiest card to get with poor credit?",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_010"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_010 should apply"
+  },
+  {
+    "id": "q045",
+    "query": "Startup founder, excellent credit, want premium without high fees",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_001",
+      "guidance_003",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_001, guidance_003 should apply"
+  },
+  {
+    "id": "q046",
+    "query": "Need expense reports for my company",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q047",
+    "query": "Getting started with credit",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q048",
+    "query": "I have very poor credit but want the best rewards",
+    "category": "conflicting",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_010"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Semantic ambiguity - policy guides interpretation. Vanilla RAG would likely miss correct card. Guidance guidance_003, guidance_010 should apply"
+  },
+  {
+    "id": "q049",
+    "query": "No fee but with high rewards rate",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q050",
+    "query": "Lots of dinners with clients",
+    "category": "dining",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_007"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_022"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_022 should apply"
+  },
+  {
+    "id": "q051",
+    "query": "Grad student needing business features on student card",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_022",
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004",
+      "guidance_011",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_004, guidance_011 should apply"
+  },
+  {
+    "id": "q052",
+    "query": "First time using credit, very nervous",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_009 should apply"
+  },
+  {
+    "id": "q053",
+    "query": "Looking for budget-friendly card",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q054",
+    "query": "What's a good card for entrepreneur expenses?",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q055",
+    "query": "Best travel card for someone who can't get premium",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_005 should apply"
+  },
+  {
+    "id": "q056",
+    "query": "Card for shopping at department stores",
+    "category": "shopping",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_002",
+      "card_003",
+      "card_010",
+      "card_031"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_012",
+      "guidance_022",
+      "guidance_023"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_012, guidance_022 should apply"
+  },
+  {
+    "id": "q057",
+    "query": "Frequent traveler card",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_027 should apply"
+  },
+  {
+    "id": "q058",
+    "query": "I drive a lot, need rewards on gas",
+    "category": "gas",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_005",
+      "card_006",
+      "card_019",
+      "card_034"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_006",
+      "guidance_025"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_006, guidance_025 should apply"
+  },
+  {
+    "id": "q059",
+    "query": "Big household, lots of food purchases",
+    "category": "grocery",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_031"
+    ],
+    "policy_preferred_cards": [
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_004 should apply"
+  },
+  {
+    "id": "q060",
+    "query": "Just turned 18, what's my options?",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_015"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_015 should apply"
+  },
+  {
+    "id": "q061",
+    "query": "Blockchain-based rewards",
+    "category": "crypto",
+    "expected_top_cards": [
+      "card_007",
+      "card_012",
+      "card_015"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_026"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_026 should apply"
+  },
+  {
+    "id": "q062",
+    "query": "I run my own company and need to track expenses",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q063",
+    "query": "Premium card with great benefits",
+    "category": "good_credit",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_004"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_003, guidance_004 should apply"
+  },
+  {
+    "id": "q064",
+    "query": "Best business card but I'm a student",
+    "category": "conflicting",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_011",
+      "guidance_017"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Semantic ambiguity - policy guides interpretation. Vanilla RAG would likely miss correct card. Guidance guidance_003, guidance_011 should apply"
+  },
+  {
+    "id": "q065",
+    "query": "Best card for university student",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_011"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_003, guidance_011 should apply"
+  },
+  {
+    "id": "q066",
+    "query": "Earn rewards without doing anything",
+    "category": "give_me_free_money",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_009 should apply"
+  },
+  {
+    "id": "q067",
+    "query": "Eat at restaurants often",
+    "category": "dining",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_007"
+    ],
+    "policy_preferred_cards": [
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_004 should apply"
+  },
+  {
+    "id": "q068",
+    "query": "Want to make my trips more affordable",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_013",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_005, guidance_013 should apply"
+  },
+  {
+    "id": "q069",
+    "query": "I just want something for nothing",
+    "category": "give_me_free_money",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_021"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_021 should apply"
+  },
+  {
+    "id": "q070",
+    "query": "Card that helps with business accounting",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q071",
+    "query": "Best cards for someone with 800 credit score",
+    "category": "good_credit",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_001",
+      "guidance_003"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_001, guidance_003 should apply"
+  },
+  {
+    "id": "q072",
+    "query": "Student but parents said must have no fees",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011",
+      "guidance_013"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_011, guidance_013 should apply"
+  },
+  {
+    "id": "q073",
+    "query": "Card that pays in cryptocurrency",
+    "category": "crypto",
+    "expected_top_cards": [
+      "card_007",
+      "card_012",
+      "card_015"
+    ],
+    "policy_preferred_cards": [
+      "card_007",
+      "card_012",
+      "card_015",
+      "card_017"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_002"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_002 should apply"
+  },
+  {
+    "id": "q074",
+    "query": "What's a good credit card for a student?",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_001",
+      "guidance_011"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_001, guidance_011 should apply"
+  },
+  {
+    "id": "q075",
+    "query": "Card for rebuilding credit",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_014"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_014 should apply"
+  },
+  {
+    "id": "q076",
+    "query": "Don't want to track categories",
+    "category": "simple",
+    "expected_top_cards": [
+      "card_004",
+      "card_048",
+      "card_049"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_002"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_002 should apply"
+  },
+  {
+    "id": "q077",
+    "query": "Budget card with luxury perks",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q078",
+    "query": "Cheapest credit card option",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013",
+      "guidance_018"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_013, guidance_018 should apply"
+  },
+  {
+    "id": "q079",
+    "query": "Don't want to pay but need travel insurance",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_027 should apply"
+  },
+  {
+    "id": "q080",
+    "query": "Weekly grocery trips",
+    "category": "grocery",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_031"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_009",
+      "guidance_021"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_009 should apply"
+  },
+  {
+    "id": "q081",
+    "query": "No fee but want premium travel benefits",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_005",
+      "guidance_013"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_005 should apply"
+  },
+  {
+    "id": "q082",
+    "query": "Lounge access but don't want high annual fee",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008",
+      "guidance_019",
+      "guidance_020"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_008, guidance_019 should apply"
+  },
+  {
+    "id": "q083",
+    "query": "Freshman with part-time job, need to earn rewards",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q084",
+    "query": "Student who wants premium travel card",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_005",
+      "guidance_011"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_005 should apply"
+  },
+  {
+    "id": "q085",
+    "query": "What's the most economical card?",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_006"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_006 should apply"
+  },
+  {
+    "id": "q086",
+    "query": "Graduate student wants premium rewards card",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_011"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_011 should apply"
+  },
+  {
+    "id": "q087",
+    "query": "Startup with no revenue, need free business card",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013",
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_013, guidance_017 should apply"
+  },
+  {
+    "id": "q088",
+    "query": "Rewards for gas station purchases",
+    "category": "gas",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_005",
+      "card_006",
+      "card_019",
+      "card_034"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_006",
+      "guidance_025"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_006, guidance_025 should apply"
+  },
+  {
+    "id": "q089",
+    "query": "I don't want to waste money on fees",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_008 should apply"
+  },
+  {
+    "id": "q090",
+    "query": "No annual fee but high rewards rate",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q091",
+    "query": "Premium travel card but have bad credit",
+    "category": "conflicting",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_005",
+      "guidance_010"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_003, guidance_005 should apply"
+  },
+  {
+    "id": "q092",
+    "query": "I do most of my shopping at grocery stores",
+    "category": "grocery",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_031"
+    ],
+    "policy_preferred_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050",
+      "card_001"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009",
+      "guidance_012",
+      "guidance_021"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_009, guidance_012 should apply"
+  },
+  {
+    "id": "q093",
+    "query": "Student who wants to build credit",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q094",
+    "query": "Minimize credit card costs",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_006"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_006 should apply"
+  },
+  {
+    "id": "q095",
+    "query": "Business spending management",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q096",
+    "query": "I want the best rewards possible",
+    "category": "premium",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q097",
+    "query": "Don't want to pay for privileges I won't use",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_020"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_020 should apply"
+  },
+  {
+    "id": "q098",
+    "query": "Which card gives me the most cash back?",
+    "category": "cashback",
+    "expected_top_cards": [
+      "card_004",
+      "card_048",
+      "card_049"
+    ],
+    "policy_preferred_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048"
+    ],
+    "guidance_should_apply": [
+      "guidance_016",
+      "guidance_026"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_016, guidance_026 should apply"
+  },
+  {
+    "id": "q099",
+    "query": "What card should I get?",
+    "category": "popular",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": true,
+    "notes": "Semantic ambiguity - policy guides interpretation. Vanilla RAG would likely miss correct card. Guidance guidance_009 should apply"
+  },
+  {
+    "id": "q100",
+    "query": "Looking for a business card for my company",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q101",
+    "query": "College student with good income, want premium rewards",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_011"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_003, guidance_011 should apply"
+  },
+  {
+    "id": "q102",
+    "query": "Beginner credit card options",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q103",
+    "query": "What's the most prestigious card?",
+    "category": "premium",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_004 should apply"
+  },
+  {
+    "id": "q104",
+    "query": "Going on vacation, want to save on flights",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_005, guidance_027 should apply"
+  },
+  {
+    "id": "q105",
+    "query": "First time applicant, what are my options?",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q106",
+    "query": "Best card for frequent flyers",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q107",
+    "query": "Building credit but also want travel rewards",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_014",
+      "guidance_027"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_005, guidance_014 should apply"
+  },
+  {
+    "id": "q108",
+    "query": "I have bad credit, what's available?",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_010"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_010 should apply"
+  },
+  {
+    "id": "q109",
+    "query": "Save money on credit card fees",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_018"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_018 should apply"
+  },
+  {
+    "id": "q110",
+    "query": "Card that gets me into airport lounges",
+    "category": "lounge",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008",
+      "guidance_019",
+      "guidance_020"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_008, guidance_019 should apply"
+  },
+  {
+    "id": "q111",
+    "query": "One card for everything",
+    "category": "simple",
+    "expected_top_cards": [
+      "card_004",
+      "card_048",
+      "card_049"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_020"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_020 should apply"
+  },
+  {
+    "id": "q112",
+    "query": "Want luxury travel perks",
+    "category": "premium",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_003, guidance_005 should apply"
+  },
+  {
+    "id": "q113",
+    "query": "Ethereum rewards card",
+    "category": "crypto",
+    "expected_top_cards": [
+      "card_007",
+      "card_012",
+      "card_015"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_016"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_016 should apply"
+  },
+  {
+    "id": "q114",
+    "query": "Need to establish credit history",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_022"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_022 should apply"
+  },
+  {
+    "id": "q115",
+    "query": "Need a card as a college freshman",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q116",
+    "query": "Need airport lounge access when I travel",
+    "category": "lounge",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_008",
+      "guidance_019"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_005, guidance_008 should apply"
+  },
+  {
+    "id": "q117",
+    "query": "Company expenses but also personal groceries on same card",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050",
+      "card_008"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009",
+      "guidance_017",
+      "guidance_021"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_009, guidance_017 should apply"
+  },
+  {
+    "id": "q118",
+    "query": "I need a business card but don't want annual fees",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": true,
+    "notes": "Conflicting constraints, multiple guidance may apply. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q119",
+    "query": "No credit check card",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_010"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_010 should apply"
+  },
+  {
+    "id": "q120",
+    "query": "Student credit card recommendation",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_011"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_011 should apply"
+  },
+  {
+    "id": "q121",
+    "query": "No credit history but want premium card benefits",
+    "category": "conflicting",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_010"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_003, guidance_010 should apply"
+  },
+  {
+    "id": "q122",
+    "query": "Crypto back on purchases",
+    "category": "crypto",
+    "expected_top_cards": [
+      "card_007",
+      "card_012",
+      "card_015"
+    ],
+    "policy_preferred_cards": [
+      "card_007",
+      "card_012",
+      "card_015",
+      "card_017",
+      "card_004"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048"
+    ],
+    "guidance_should_apply": [
+      "guidance_002",
+      "guidance_016",
+      "guidance_026"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_002, guidance_016 should apply"
+  },
+  {
+    "id": "q123",
+    "query": "New to credit, need guidance",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_021"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_021 should apply"
+  },
+  {
+    "id": "q124",
+    "query": "Family of 4, lots of grocery shopping",
+    "category": "grocery",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_031"
+    ],
+    "policy_preferred_cards": [
+      "card_004",
+      "card_048",
+      "card_049",
+      "card_050",
+      "card_001"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_009",
+      "guidance_012",
+      "guidance_021"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_009, guidance_012 should apply"
+  },
+  {
+    "id": "q125",
+    "query": "Top-tier credit, what cards can I get?",
+    "category": "good_credit",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q126",
+    "query": "Zero annual fee with lounge access",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008",
+      "guidance_019",
+      "guidance_020"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_008, guidance_019 should apply"
+  },
+  {
+    "id": "q127",
+    "query": "Lowest cost credit card",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_005"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_005 should apply"
+  },
+  {
+    "id": "q128",
+    "query": "Co-branded store card",
+    "category": "shopping",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_020"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_020 should apply"
+  },
+  {
+    "id": "q129",
+    "query": "I eat out frequently at restaurants",
+    "category": "dining",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_007"
+    ],
+    "policy_preferred_cards": [
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_004"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_004 should apply"
+  },
+  {
+    "id": "q130",
+    "query": "Business card for startup with no personal guarantee",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q131",
+    "query": "Frequent business trips, need travel benefits",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_017",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_017 should apply"
+  },
+  {
+    "id": "q132",
+    "query": "No-fee card with concierge service",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_025"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 2,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_025 should apply"
+  },
+  {
+    "id": "q133",
+    "query": "Young person getting first credit card",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_008 should apply"
+  },
+  {
+    "id": "q134",
+    "query": "Cashback and travel rewards in one card",
+    "category": "conflicting",
+    "expected_top_cards": [],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_004",
+      "card_048",
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_016",
+      "guidance_026"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": false,
+    "notes": "Semantic ambiguity - policy guides interpretation. Guidance guidance_005, guidance_016 should apply"
+  },
+  {
+    "id": "q135",
+    "query": "No cost card with travel credits",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_027"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_005, guidance_027 should apply"
+  },
+  {
+    "id": "q136",
+    "query": "Something for managing business costs",
+    "category": "business",
+    "expected_top_cards": [
+      "card_008",
+      "card_011",
+      "card_016"
+    ],
+    "policy_preferred_cards": [
+      "card_008",
+      "card_011",
+      "card_016",
+      "card_021",
+      "card_022"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_017"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_017 should apply"
+  },
+  {
+    "id": "q137",
+    "query": "Building credit for the first time",
+    "category": "student",
+    "expected_top_cards": [
+      "card_009",
+      "card_023",
+      "card_036"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_014"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_014 should apply"
+  },
+  {
+    "id": "q138",
+    "query": "Best card for store purchases",
+    "category": "shopping",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_003 should apply"
+  },
+  {
+    "id": "q139",
+    "query": "Need a card to build my credit",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_015"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_015 should apply"
+  },
+  {
+    "id": "q140",
+    "query": "I want airport lounge access",
+    "category": "lounge",
+    "expected_top_cards": [
+      "card_013",
+      "card_024",
+      "card_030"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_008",
+      "guidance_019",
+      "guidance_020"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_008, guidance_019 should apply"
+  },
+  {
+    "id": "q141",
+    "query": "No annual fee but high rewards rate",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [
+      "card_001",
+      "card_004",
+      "card_005",
+      "card_006",
+      "card_007"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_013"
+    ],
+    "difficulty": "hard",
+    "conflict_level": 1,
+    "vanilla_failure_expected": false,
+    "notes": "Conflicting constraints, multiple guidance may apply. Guidance guidance_013 should apply"
+  },
+  {
+    "id": "q142",
+    "query": "No credit check card",
+    "category": "poor_credit",
+    "expected_top_cards": [
+      "card_002",
+      "card_003",
+      "card_009"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_010"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_010 should apply"
+  },
+  {
+    "id": "q143",
+    "query": "Simple no brainer card",
+    "category": "simple",
+    "expected_top_cards": [
+      "card_004",
+      "card_048",
+      "card_049"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_016"
+    ],
+    "difficulty": "expert",
+    "conflict_level": 3,
+    "vanilla_failure_expected": true,
+    "notes": "Semantic ambiguity - policy guides interpretation. Vanilla RAG would likely miss correct card. Guidance guidance_016 should apply"
+  },
+  {
+    "id": "q144",
+    "query": "Card for airline rewards",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_025"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": true,
+    "notes": "Direct keyword match - guidance triggers cleanly. Vanilla RAG would likely miss correct card. Guidance guidance_025 should apply"
+  },
+  {
+    "id": "q145",
+    "query": "Card for overseas travel",
+    "category": "international",
+    "expected_top_cards": [
+      "card_016",
+      "card_020",
+      "card_028"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_007",
+      "guidance_027"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_005, guidance_007 should apply"
+  },
+  {
+    "id": "q146",
+    "query": "Looking for budget-friendly card",
+    "category": "no_fee",
+    "expected_top_cards": [
+      "card_001",
+      "card_004",
+      "card_005"
+    ],
+    "policy_preferred_cards": [],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_018"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Implicit needs requiring guidance adjustment. Guidance guidance_018 should apply"
+  },
+  {
+    "id": "q147",
+    "query": "Want to make my trips more affordable",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_013",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_013 should apply"
+  },
+  {
+    "id": "q148",
+    "query": "Frequent business trips, need travel benefits",
+    "category": "travel",
+    "expected_top_cards": [
+      "card_013",
+      "card_016",
+      "card_018"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_016",
+      "card_018",
+      "card_020",
+      "card_024"
+    ],
+    "policy_excluded_cards": [
+      "card_013",
+      "card_016"
+    ],
+    "guidance_should_apply": [
+      "guidance_005",
+      "guidance_017",
+      "guidance_027"
+    ],
+    "difficulty": "medium",
+    "conflict_level": 1,
+    "vanilla_failure_expected": true,
+    "notes": "Implicit needs requiring guidance adjustment. Vanilla RAG would likely miss correct card. Guidance guidance_005, guidance_017 should apply"
+  },
+  {
+    "id": "q149",
+    "query": "Bitcoin rewards credit card",
+    "category": "crypto",
+    "expected_top_cards": [
+      "card_007",
+      "card_012",
+      "card_015"
+    ],
+    "policy_preferred_cards": [
+      "card_007",
+      "card_012",
+      "card_015",
+      "card_017"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_002"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_002 should apply"
+  },
+  {
+    "id": "q150",
+    "query": "What's the best card for gas stations?",
+    "category": "gas",
+    "expected_top_cards": [
+      "card_001",
+      "card_002",
+      "card_003"
+    ],
+    "policy_preferred_cards": [
+      "card_013",
+      "card_024",
+      "card_030",
+      "card_033",
+      "card_038"
+    ],
+    "policy_excluded_cards": [],
+    "guidance_should_apply": [
+      "guidance_003",
+      "guidance_006",
+      "guidance_025"
+    ],
+    "difficulty": "easy",
+    "conflict_level": 0,
+    "vanilla_failure_expected": false,
+    "notes": "Direct keyword match - guidance triggers cleanly. Guidance guidance_003, guidance_006 should apply"
+  }
+]

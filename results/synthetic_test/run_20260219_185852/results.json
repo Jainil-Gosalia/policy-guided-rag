@@ -1,0 +1,278 @@
+{
+  "timestamp": "2026-02-19T18:58:52.660131",
+  "experiment": "synthetic_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "mixedbread-ai/mxbai-rerank-large-v1"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "manual",
+    "num_queries": 8,
+    "vanilla": {
+      "top_1_accuracy": 0.75,
+      "top_5_accuracy": 1.0,
+      "avg_position": 1.375,
+      "positions": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        2
+      ]
+    },
+    "policy_guided": {
+      "top_1_accuracy": 1.0,
+      "top_5_accuracy": 1.0,
+      "avg_position": 1.0,
+      "positions": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "improvement": {
+      "top_1_delta": 0.25,
+      "top_5_delta": 0.0,
+      "position_delta": 0.375,
+      "queries_improved": 0.25
+    },
+    "detailed": [
+      {
+        "query_id": "q1",
+        "query": "I need a credit card with airport lounge access",
+        "expected": [
+          "card_1",
+          "card_3"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            2,
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            2,
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q2",
+        "query": "Best credit card for a college student with no cre",
+        "expected": [
+          "card_4"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q3",
+        "query": "I want a card with no annual fee",
+        "expected": [
+          "card_2",
+          "card_4"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            2,
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            2
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q4",
+        "query": "Credit card for international travel with insuranc",
+        "expected": [
+          "card_1",
+          "card_3"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            2
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            2
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q5",
+        "query": "Small business credit card for office expenses",
+        "expected": [
+          "card_5"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q6",
+        "query": "I have excellent credit (780), what card should I ",
+        "expected": [
+          "card_1",
+          "card_3"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            2
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q7",
+        "query": "Everyday spending cashback card",
+        "expected": [
+          "card_2"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q8",
+        "query": "Card with good rewards and lounge access, but conc",
+        "expected": [
+          "card_3"
+        ],
+        "difficulty": "unknown",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "IMPROVED"
+      }
+    ]
+  }
+}

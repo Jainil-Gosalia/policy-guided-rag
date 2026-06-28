@@ -1,0 +1,174 @@
+{
+  "method": "Policy-Guided RAG",
+  "num_queries": 8,
+  "avg_precision": 0.30000000000000004,
+  "avg_recall": 1.0,
+  "avg_f1": 0.45238095238095244,
+  "top_1_accuracy": 0.75,
+  "per_query_results": [
+    {
+      "query": "I need a credit card with airport lounge access",
+      "expected_cards": [
+        "card_1",
+        "card_3"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714285714285715,
+      "top_1_correct": true,
+      "guidance_should_apply": [
+        "guidance_1"
+      ]
+    },
+    {
+      "query": "Best credit card for a college student with no credit history",
+      "expected_cards": [
+        "card_4"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1": 0.33333333333333337,
+      "top_1_correct": true,
+      "guidance_should_apply": [
+        "guidance_2",
+        "guidance_7"
+      ]
+    },
+    {
+      "query": "I want a card with no annual fee",
+      "expected_cards": [
+        "card_4",
+        "card_2"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714285714285715,
+      "top_1_correct": true,
+      "guidance_should_apply": [
+        "guidance_3"
+      ]
+    },
+    {
+      "query": "Credit card for international travel with insurance",
+      "expected_cards": [
+        "card_1",
+        "card_3"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714285714285715,
+      "top_1_correct": true,
+      "guidance_should_apply": [
+        "guidance_4"
+      ]
+    },
+    {
+      "query": "Small business credit card for office expenses",
+      "expected_cards": [
+        "card_5"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1": 0.33333333333333337,
+      "top_1_correct": false,
+      "guidance_should_apply": [
+        "guidance_5"
+      ]
+    },
+    {
+      "query": "I have excellent credit (780), what card should I get?",
+      "expected_cards": [
+        "card_1",
+        "card_3"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714285714285715,
+      "top_1_correct": true,
+      "guidance_should_apply": [
+        "guidance_6"
+      ]
+    },
+    {
+      "query": "Everyday spending cashback card",
+      "expected_cards": [
+        "card_2"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1": 0.33333333333333337,
+      "top_1_correct": true,
+      "guidance_should_apply": []
+    },
+    {
+      "query": "Card with good rewards and lounge access, but concerned about fees",
+      "expected_cards": [
+        "card_3"
+      ],
+      "retrieved_cards": [
+        "card_2",
+        "card_1",
+        "card_4",
+        "card_3",
+        "card_5"
+      ],
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1": 0.33333333333333337,
+      "top_1_correct": false,
+      "guidance_should_apply": [
+        "guidance_1",
+        "guidance_3"
+      ]
+    }
+  ]
+}

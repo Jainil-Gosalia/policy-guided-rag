@@ -1,0 +1,44 @@
+[
+  {
+    "id": "guidance_1",
+    "text": "When users ask about lounge access, prioritize Premium Rewards Plus and Travel Elite Card as they offer Priority Pass membership.",
+    "type": "guidance",
+    "priority": "high"
+  },
+  {
+    "id": "guidance_2",
+    "text": "For users with limited or no credit history, strongly recommend Student Starter Card as it has the lowest credit score requirement and is designed for building credit.",
+    "type": "guidance",
+    "priority": "high"
+  },
+  {
+    "id": "guidance_3",
+    "text": "When annual fee is explicitly mentioned as a concern, deprioritize cards with fees above $100 and emphasize no-annual-fee options like Everyday Cashback.",
+    "type": "guidance",
+    "priority": "medium"
+  },
+  {
+    "id": "guidance_4",
+    "text": "For travel-related queries, rank cards with travel insurance and no foreign transaction fees higher. Premium Rewards Plus and Travel Elite Card should be top choices.",
+    "type": "guidance",
+    "priority": "high"
+  },
+  {
+    "id": "guidance_5",
+    "text": "For business-related queries, always prioritize Business Pro Card even if other cards might seem relevant, as it's specifically designed for business needs.",
+    "type": "guidance",
+    "priority": "high"
+  },
+  {
+    "id": "guidance_6",
+    "text": "When users mention high credit scores (750+), feel confident recommending premium cards. Don't over-recommend basic cards to high-credit-score users.",
+    "type": "guidance",
+    "priority": "medium"
+  },
+  {
+    "id": "guidance_7",
+    "text": "Deprioritize Student Starter Card for non-student queries as it has limited benefits compared to other options.",
+    "type": "guidance",
+    "priority": "low"
+  }
+]

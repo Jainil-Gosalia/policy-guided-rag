@@ -1,0 +1,1354 @@
+{
+  "timestamp": "2026-06-28T23:04:18.103159",
+  "experiment": "synthetic_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3,
+      "policy_mode": "augment",
+      "policy_weight": 5.0
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "synthetic",
+    "accuracy_subset_n": 138,
+    "accuracy": {
+      "vanilla": {
+        "top_1_accuracy": 0.2826086956521739,
+        "top_5_accuracy": 0.6521739130434783,
+        "avg_position": 35.971014492753625,
+        "n": 138
+      },
+      "rerank_only": {
+        "top_1_accuracy": 0.2536231884057971,
+        "top_5_accuracy": 0.6594202898550725,
+        "avg_position": 35.26086956521739,
+        "n": 138
+      },
+      "pg_augment": {
+        "top_1_accuracy": 0.2028985507246377,
+        "top_5_accuracy": 0.6739130434782609,
+        "avg_position": 34.0,
+        "n": 138
+      },
+      "pg_operator": {
+        "top_1_accuracy": 0.2898550724637681,
+        "top_5_accuracy": 0.717391304347826,
+        "avg_position": 29.463768115942027,
+        "n": 138
+      }
+    },
+    "significance": {
+      "rerank_only_vs_vanilla": {
+        "comparison": "rerank_only vs vanilla",
+        "n": 138,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 13,
+          "b10_only_A_correct": 17,
+          "discordant": 30,
+          "p_value": 0.5846647117286922,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 16,
+          "b10_only_A_correct": 15,
+          "discordant": 31,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 1404.5,
+          "p_value": 0.9134433329982857,
+          "non_tied_pairs": 75,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 0.7101449275362319,
+          "ci_low": -6.898550724637682,
+          "ci_high": 8.326086956521738,
+          "n": 138
+        }
+      },
+      "pg_augment_vs_rerank_only": {
+        "comparison": "pg_augment vs rerank_only",
+        "n": 138,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 9,
+          "b10_only_A_correct": 16,
+          "discordant": 25,
+          "p_value": 0.2295229434967041,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 10,
+          "b10_only_A_correct": 8,
+          "discordant": 18,
+          "p_value": 0.8145294189453125,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 986.0,
+          "p_value": 0.716121101790585,
+          "non_tied_pairs": 64,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 1.2608695652173914,
+          "ci_low": -4.340579710144928,
+          "ci_high": 6.86231884057971,
+          "n": 138
+        }
+      },
+      "pg_operator_vs_rerank_only": {
+        "comparison": "pg_operator vs rerank_only",
+        "n": 138,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 17,
+          "b10_only_A_correct": 12,
+          "discordant": 29,
+          "p_value": 0.45825831964612007,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 31,
+          "b10_only_A_correct": 23,
+          "discordant": 54,
+          "p_value": 0.3408909412200971,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 1698.5,
+          "p_value": 0.15875190326471122,
+          "non_tied_pairs": 90,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 5.797101449275362,
+          "ci_low": -4.057971014492754,
+          "ci_high": 15.72463768115942,
+          "n": 138
+        }
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "n": 45,
+        "rerank_only": {
+          "top_1_accuracy": 0.26666666666666666,
+          "top_5_accuracy": 0.7333333333333333,
+          "avg_position": 28.066666666666666,
+          "n": 45
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.26666666666666666,
+          "top_5_accuracy": 0.7111111111111111,
+          "avg_position": 30.022222222222222,
+          "n": 45
+        }
+      },
+      "medium": {
+        "n": 53,
+        "rerank_only": {
+          "top_1_accuracy": 0.24528301886792453,
+          "top_5_accuracy": 0.660377358490566,
+          "avg_position": 35.22641509433962,
+          "n": 53
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.3584905660377358,
+          "top_5_accuracy": 0.7924528301886793,
+          "avg_position": 22.169811320754718,
+          "n": 53
+        }
+      },
+      "hard": {
+        "n": 37,
+        "rerank_only": {
+          "top_1_accuracy": 0.24324324324324326,
+          "top_5_accuracy": 0.5675675675675675,
+          "avg_position": 44.13513513513514,
+          "n": 37
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.24324324324324326,
+          "top_5_accuracy": 0.5945945945945946,
+          "avg_position": 41.45945945945946,
+          "n": 37
+        }
+      },
+      "expert": {
+        "n": 3,
+        "rerank_only": {
+          "top_1_accuracy": 0.3333333333333333,
+          "top_5_accuracy": 0.6666666666666666,
+          "avg_position": 34.333333333333336,
+          "n": 3
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.0,
+          "top_5_accuracy": 1.0,
+          "avg_position": 2.0,
+          "n": 3
+        }
+      }
+    },
+    "controllability": {
+      "n": 101,
+      "mean_rank": {
+        "vanilla": 75.84356435643564,
+        "rerank_only": 70.31237623762377,
+        "pg_augment": 69.73217821782178,
+        "pg_operator": 40.25
+      },
+      "topn_hit_rate": {
+        "vanilla": 0.6138613861386139,
+        "rerank_only": 0.693069306930693,
+        "pg_augment": 0.7524752475247525,
+        "pg_operator": 0.8514851485148515
+      },
+      "steering_lift_vs_rerank_only": {
+        "pg_augment": {
+          "mean": 0.5801980198019802,
+          "ci_low": -1.67029702970297,
+          "ci_high": 2.727722772277228,
+          "n": 101
+        },
+        "pg_operator": {
+          "mean": 30.062376237623763,
+          "ci_low": 23.848514851485145,
+          "ci_high": 36.43811881188119,
+          "n": 101
+        }
+      }
+    },
+    "enforcement": {
+      "n": 11,
+      "excluded_in_topn_rate": {
+        "vanilla": 0.0,
+        "rerank_only": 0.0,
+        "pg_augment": 0.0,
+        "pg_operator": 0.0
+      }
+    },
+    "detailed": [
+      {
+        "id": "q001",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q002",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q003",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q004",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q005",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 99,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q006",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q007",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q008",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q009",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q010",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "pg_augment": 3,
+        "pg_operator": 3
+      },
+      {
+        "id": "q011",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q012",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 5,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q013",
+        "difficulty": "easy",
+        "vanilla": 3,
+        "rerank_only": 3,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q015",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 99,
+        "pg_operator": 5
+      },
+      {
+        "id": "q016",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q017",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q018",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q019",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q020",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 3,
+        "pg_augment": 3,
+        "pg_operator": 4
+      },
+      {
+        "id": "q021",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q022",
+        "difficulty": "hard",
+        "vanilla": 4,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q023",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q024",
+        "difficulty": "hard",
+        "vanilla": 4,
+        "rerank_only": 5,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q025",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q027",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q028",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q029",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q030",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 4,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q031",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q032",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q033",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 4,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q036",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q037",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q038",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q039",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 99
+      },
+      {
+        "id": "q040",
+        "difficulty": "medium",
+        "vanilla": 3,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q041",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q042",
+        "difficulty": "hard",
+        "vanilla": 4,
+        "rerank_only": 4,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q043",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q044",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q045",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q046",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 5,
+        "pg_augment": 4,
+        "pg_operator": 2
+      },
+      {
+        "id": "q047",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q049",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q050",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q051",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q052",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q053",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q054",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q055",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q056",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q057",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "pg_augment": 5,
+        "pg_operator": 3
+      },
+      {
+        "id": "q058",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q059",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q060",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "pg_augment": 3,
+        "pg_operator": 99
+      },
+      {
+        "id": "q061",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q062",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 5,
+        "pg_augment": 3,
+        "pg_operator": 4
+      },
+      {
+        "id": "q063",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q065",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q067",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q068",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q070",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 1
+      },
+      {
+        "id": "q071",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q072",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q073",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q074",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q075",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q076",
+        "difficulty": "expert",
+        "vanilla": 2,
+        "rerank_only": 99,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q077",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q078",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q079",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q080",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q081",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q082",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q083",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "pg_augment": 3,
+        "pg_operator": 99
+      },
+      {
+        "id": "q084",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q085",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q086",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 2,
+        "pg_operator": 4
+      },
+      {
+        "id": "q087",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 3,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q088",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q089",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 1,
+        "pg_augment": 2,
+        "pg_operator": 1
+      },
+      {
+        "id": "q090",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q092",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q093",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q094",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q095",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q096",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q097",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 1
+      },
+      {
+        "id": "q098",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q100",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "pg_augment": 4,
+        "pg_operator": 2
+      },
+      {
+        "id": "q101",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q102",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q103",
+        "difficulty": "medium",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q104",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 3,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q105",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q106",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 4,
+        "pg_augment": 99,
+        "pg_operator": 5
+      },
+      {
+        "id": "q107",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q108",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 5
+      },
+      {
+        "id": "q109",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q110",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q111",
+        "difficulty": "expert",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q112",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 2,
+        "pg_augment": 5,
+        "pg_operator": 2
+      },
+      {
+        "id": "q113",
+        "difficulty": "easy",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q114",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q115",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q116",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q117",
+        "difficulty": "hard",
+        "vanilla": 5,
+        "rerank_only": 5,
+        "pg_augment": 5,
+        "pg_operator": 5
+      },
+      {
+        "id": "q118",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q119",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 5,
+        "pg_operator": 99
+      },
+      {
+        "id": "q120",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q122",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q123",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q124",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "pg_augment": 2,
+        "pg_operator": 3
+      },
+      {
+        "id": "q125",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q126",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q127",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q128",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 3,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q129",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 2,
+        "pg_augment": 5,
+        "pg_operator": 3
+      },
+      {
+        "id": "q130",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q131",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q132",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "pg_augment": 99,
+        "pg_operator": 1
+      },
+      {
+        "id": "q133",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q135",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 1
+      },
+      {
+        "id": "q136",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q137",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q138",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q139",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q140",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q141",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q142",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 5,
+        "pg_operator": 99
+      },
+      {
+        "id": "q143",
+        "difficulty": "expert",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q144",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "pg_augment": 2,
+        "pg_operator": 1
+      },
+      {
+        "id": "q145",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q146",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q147",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q148",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q149",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q150",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "pg_augment": 5,
+        "pg_operator": 99
+      }
+    ]
+  }
+}

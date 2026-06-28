@@ -1,0 +1,44 @@
+[
+  {
+    "id": "guidance_1",
+    "rule": "When users ask about lounge access, prioritize Premium Rewards Plus and Travel Elite Card as they offer Priority Pass membership.",
+    "priority": "high",
+    "applicable_queries": ["lounge", "airport lounge", "priority pass"]
+  },
+  {
+    "id": "guidance_2",
+    "rule": "For users with limited or no credit history, strongly recommend Student Starter Card as it has the lowest credit score requirement and is designed for building credit.",
+    "priority": "high",
+    "applicable_queries": ["student", "first card", "build credit", "no credit history"]
+  },
+  {
+    "id": "guidance_3",
+    "rule": "When annual fee is explicitly mentioned as a concern, deprioritize cards with fees above $100 and emphasize no-annual-fee options like Everyday Cashback.",
+    "priority": "medium",
+    "applicable_queries": ["no annual fee", "low fee", "fee free"]
+  },
+  {
+    "id": "guidance_4",
+    "rule": "For travel-related queries, rank cards with travel insurance and no foreign transaction fees higher. Premium Rewards Plus and Travel Elite Card should be top choices.",
+    "priority": "high",
+    "applicable_queries": ["travel", "international", "abroad", "vacation"]
+  },
+  {
+    "id": "guidance_5",
+    "rule": "For business-related queries, always prioritize Business Pro Card even if other cards might seem relevant, as it's specifically designed for business needs.",
+    "priority": "high",
+    "applicable_queries": ["business", "company", "entrepreneur", "small business"]
+  },
+  {
+    "id": "guidance_6",
+    "rule": "When users mention high credit scores (750+), feel confident recommending premium cards. Don't over-recommend basic cards to high-credit-score users.",
+    "priority": "medium",
+    "applicable_queries": ["excellent credit", "high credit score", "750+"]
+  },
+  {
+    "id": "guidance_7",
+    "rule": "Deprioritize Student Starter Card for non-student queries as it has limited benefits compared to other options.",
+    "priority": "low",
+    "applicable_queries": ["*"]
+  }
+]

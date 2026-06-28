@@ -1,0 +1,409 @@
+{
+  "timestamp": "2026-02-19T17:45:26.626399",
+  "experiment": "manual_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "mixedbread-ai/mxbai-rerank-large-v1"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "num_queries": 15,
+    "vanilla": {
+      "top_1_accuracy": 0.13333333333333333,
+      "top_5_accuracy": 0.3333333333333333,
+      "avg_position": 66.53333333333333,
+      "positions": [
+        1,
+        2,
+        99,
+        2,
+        1,
+        2,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99
+      ]
+    },
+    "policy_guided": {
+      "top_1_accuracy": 0.2,
+      "top_5_accuracy": 0.3333333333333333,
+      "avg_position": 66.46666666666667,
+      "positions": [
+        1,
+        1,
+        99,
+        2,
+        1,
+        2,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99
+      ]
+    },
+    "improvement": {
+      "top_1_delta": 0.06666666666666667,
+      "top_5_delta": 0.0,
+      "position_delta": 0.06666666666666288,
+      "queries_improved": 0.06666666666666667
+    },
+    "detailed": [
+      {
+        "query": "business expenses for my startup",
+        "expected": "card_5",
+        "category": "business",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "I don't want to pay any annual fee",
+        "expected": "card_2",
+        "category": "no_fee",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query": "I drive to work and need gas rewards",
+        "expected": "card_10",
+        "category": "gas",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "I have excellent credit score 780",
+        "expected": "card_1",
+        "category": "excellent",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "I'm a college student with no credit",
+        "expected": "card_4",
+        "category": "student",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "looking for a card with airport lounge a",
+        "expected": "card_1",
+        "category": "lounge",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "best card for dining and restaurants",
+        "expected": "card_6",
+        "category": "dining",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "I need to build my credit score",
+        "expected": "card_9",
+        "category": "building_credit",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "shopping on amazon and whole foods",
+        "expected": "card_11",
+        "category": "shopping",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "crypto rewards and bitcoin back",
+        "expected": "card_14",
+        "category": "crypto",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "international travel no foreign fees",
+        "expected": "card_15",
+        "category": "international",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "airline miles and free checked bags",
+        "expected": "card_12",
+        "category": "airline",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "simple cashback on everything",
+        "expected": "card_7",
+        "category": "simple",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "hotel rewards and gold status",
+        "expected": "card_6",
+        "category": "hotels",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query": "premium card with best travel benefits",
+        "expected": "card_8",
+        "category": "premium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99
+          ]
+        },
+        "improvement": "SAME"
+      }
+    ]
+  }
+}

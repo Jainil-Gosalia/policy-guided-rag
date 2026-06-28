@@ -1,0 +1,22 @@
+# Core dependencies
+chromadb==0.4.22
+sentence-transformers==2.3.1
+torch==2.1.2
+transformers==4.36.2
+
+# Config / data
+pyyaml==6.0.1
+numpy==1.24.3
+pandas==2.0.3
+tqdm==4.66.1
+
+# Visualization (optional)
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# Testing
+pytest==7.4.3
+
+# Jupyter (optional)
+jupyter==1.0.0
+ipykernel==6.25.0

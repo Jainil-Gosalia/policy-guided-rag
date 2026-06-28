@@ -1,0 +1,34 @@
+# Dataset configurations with file mappings
+
+datasets:
+  manual:
+    name: "Manual Dataset"
+    description: "Hand-crafted credit card queries and guidance rules"
+    files:
+      cards: "data/manual/cards.json"
+      guidance: "data/manual/guidance.json"
+      queries: "data/manual/queries.json"
+    metadata:
+      num_cards: 15
+      num_guidance: 7
+      num_queries: 15
+
+  synthetic:
+    name: "Synthetic Dataset"
+    description: "Auto-generated credit card queries with varying difficulty"
+    files:
+      cards: "data/synthetic/cards.json"
+      guidance: "data/synthetic/guidance.json"
+      queries: "data/synthetic/queries.json"
+      metadata: "data/synthetic/metadata.json"
+    metadata:
+      num_cards: 50
+      num_guidance: 25
+      num_queries: 150
+
+  processed:
+    name: "Processed Chunks"
+    description: "Pre-computed context and guidance chunks"
+    files:
+      context_chunks: "data/processed/manual_context_chunks.json"
+      guidance_chunks: "data/processed/manual_guidance_chunks.json"

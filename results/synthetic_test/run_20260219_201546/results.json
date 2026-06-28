@@ -1,0 +1,5000 @@
+{
+  "timestamp": "2026-02-19T20:15:46.579058",
+  "experiment": "synthetic_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "mixedbread-ai/mxbai-rerank-large-v1"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "synthetic",
+    "num_queries": 150,
+    "vanilla": {
+      "top_1_accuracy": 0.07333333333333333,
+      "top_5_accuracy": 0.3,
+      "avg_position": 70.16666666666667,
+      "positions": [
+        3,
+        99,
+        99,
+        3,
+        4,
+        99,
+        99,
+        99,
+        3,
+        99,
+        99,
+        2,
+        2,
+        99,
+        99,
+        99,
+        3,
+        99,
+        99,
+        5,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        5,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        4,
+        99,
+        1,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        1,
+        4,
+        99,
+        99,
+        99,
+        99,
+        99,
+        2,
+        99,
+        99,
+        99,
+        99,
+        1,
+        3,
+        99,
+        1,
+        99,
+        99,
+        1,
+        99,
+        99,
+        99,
+        4,
+        99,
+        99,
+        2,
+        99,
+        99,
+        99,
+        99,
+        1,
+        99,
+        1,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        4,
+        99,
+        99,
+        99,
+        99,
+        5,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        4,
+        99,
+        4,
+        99,
+        99,
+        99,
+        1,
+        3,
+        99,
+        5,
+        99,
+        4,
+        99,
+        1,
+        4,
+        5,
+        99,
+        99,
+        1,
+        5,
+        99,
+        99,
+        2,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        1,
+        4,
+        99,
+        3,
+        4,
+        2,
+        99,
+        4,
+        99,
+        99,
+        2,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        3,
+        99,
+        99,
+        3,
+        99,
+        99
+      ]
+    },
+    "policy_guided": {
+      "top_1_accuracy": 0.1,
+      "top_5_accuracy": 0.3933333333333333,
+      "avg_position": 61.193333333333335,
+      "positions": [
+        5,
+        99,
+        5,
+        5,
+        99,
+        3,
+        99,
+        99,
+        3,
+        1,
+        99,
+        99,
+        1,
+        99,
+        99,
+        99,
+        4,
+        1,
+        99,
+        2,
+        99,
+        99,
+        99,
+        5,
+        99,
+        99,
+        3,
+        99,
+        4,
+        3,
+        2,
+        99,
+        4,
+        1,
+        99,
+        1,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        5,
+        2,
+        4,
+        99,
+        99,
+        99,
+        2,
+        99,
+        3,
+        3,
+        99,
+        4,
+        99,
+        1,
+        1,
+        99,
+        5,
+        99,
+        99,
+        4,
+        99,
+        3,
+        99,
+        2,
+        99,
+        99,
+        3,
+        99,
+        99,
+        99,
+        99,
+        5,
+        99,
+        3,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        3,
+        1,
+        99,
+        99,
+        99,
+        4,
+        99,
+        99,
+        4,
+        99,
+        99,
+        1,
+        99,
+        99,
+        5,
+        99,
+        3,
+        99,
+        99,
+        99,
+        2,
+        99,
+        99,
+        99,
+        5,
+        2,
+        99,
+        99,
+        1,
+        4,
+        99,
+        99,
+        1,
+        1,
+        99,
+        99,
+        1,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        1,
+        2,
+        99,
+        3,
+        5,
+        3,
+        99,
+        5,
+        99,
+        99,
+        1,
+        99,
+        99,
+        99,
+        99,
+        2,
+        99,
+        4,
+        99,
+        99,
+        3,
+        99,
+        99
+      ]
+    },
+    "improvement": {
+      "top_1_delta": 0.02666666666666667,
+      "top_5_delta": 0.09333333333333334,
+      "position_delta": 8.973333333333336,
+      "queries_improved": 0.23333333333333334
+    },
+    "detailed": [
+      {
+        "query_id": "q001",
+        "query": "Shop at supermarket every week",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            99,
+            5
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q002",
+        "query": "International travel with no credit history",
+        "expected": [
+          "card_013",
+          "card_018",
+          "card_024"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q003",
+        "query": "Undergraduate needs business card for internship",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q004",
+        "query": "Freelancer wants business card with cashback",
+        "expected": [
+          "card_004",
+          "card_008",
+          "card_011"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            5,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q005",
+        "query": "Planning a honeymoon, need travel rewards",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            99,
+            4
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q006",
+        "query": "Looking for top-tier benefits",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            99,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q007",
+        "query": "Business card for side hustle with no fees",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q008",
+        "query": "Zero annual cost credit card",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q009",
+        "query": "Card for LLC expenses",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            99,
+            3
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            4,
+            5,
+            3
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q010",
+        "query": "Which card gives me the most cash back?",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            3,
+            1,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q011",
+        "query": "I want the best rewards possible",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q012",
+        "query": "I do most of my shopping at grocery stores",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2,
+            99,
+            4
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q013",
+        "query": "Looking for airline miles rewards",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            2,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            1,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q014",
+        "query": "What's the best card overall?",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q015",
+        "query": "Getting started with credit",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q016",
+        "query": "International friendly credit card",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q017",
+        "query": "Startup with no revenue, need free business card",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q018",
+        "query": "Card with free airport lounge visits",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            5,
+            1,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q019",
+        "query": "Want luxury travel perks",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_016"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q020",
+        "query": "I need a credit card for my startup business expen",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            2,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q021",
+        "query": "No annual fee but high rewards rate",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q022",
+        "query": "Travel rewards with no foreign transaction fees",
+        "expected": [
+          "card_018",
+          "card_013",
+          "card_024"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q023",
+        "query": "Expense tracking for my side hustle",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q024",
+        "query": "Small business owner seeking premium without high ",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q025",
+        "query": "Student but parents said must have no fees",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q026",
+        "query": "Give me your best card",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q027",
+        "query": "Card that gets me into airport lounges",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            5,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q028",
+        "query": "Travel abroad next month",
+        "expected": [
+          "card_013",
+          "card_018",
+          "card_024"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q029",
+        "query": "Free card but airport lounge access",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q030",
+        "query": "Need to separate personal and business spending",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            4
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q031",
+        "query": "Corporate card for expenses",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            99,
+            2
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q032",
+        "query": "Eat at restaurants often",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q033",
+        "query": "I want a free credit card",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q034",
+        "query": "I want something simple with no hassle",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            99,
+            4
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            3,
+            5
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q035",
+        "query": "Maximum value with zero effort",
+        "expected": [
+          "card_006",
+          "card_007",
+          "card_008"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q036",
+        "query": "Lounge access but don't want high annual fee",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            99,
+            1
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q037",
+        "query": "Graduate student wants premium rewards card",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q038",
+        "query": "Save money on credit card fees",
+        "expected": [
+          "card_005",
+          "card_006",
+          "card_019"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q039",
+        "query": "Freshman with part-time job, need to earn rewards",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q040",
+        "query": "What's the most economical card?",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q041",
+        "query": "Just turned 18, what's my options?",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q042",
+        "query": "Startup founder, excellent credit, want premium wi",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q043",
+        "query": "Looking for budget-friendly card",
+        "expected": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q044",
+        "query": "Need a card for business purchases",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            99,
+            5
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q045",
+        "query": "Company expenses but also personal groceries on sa",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            4,
+            2
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            4,
+            5,
+            2
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q046",
+        "query": "Need expense reports for my company",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            5,
+            4,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q047",
+        "query": "Don't mind paying for premium benefits",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q048",
+        "query": "I just want something for nothing",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q049",
+        "query": "College senior with good income seeking premium",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q050",
+        "query": "Keep it simple, no extra costs",
+        "expected": [
+          "card_004",
+          "card_001",
+          "card_005"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2,
+            99,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q051",
+        "query": "Budget card with luxury perks",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q052",
+        "query": "I run my own company and need to track expenses",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            4,
+            2
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            4
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q053",
+        "query": "Track business spending with credit card",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            5,
+            4,
+            3
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q054",
+        "query": "Card for graduate student",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q055",
+        "query": "Business card for startup with no personal guarant",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q056",
+        "query": "Which card gives me Priority Pass?",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q057",
+        "query": "Travel outside US credit card",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            1,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            1,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q058",
+        "query": "Credit card with airport club access",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            4,
+            1,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q059",
+        "query": "Restaurants and food delivery",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q060",
+        "query": "What's the most prestigious card?",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            1,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q061",
+        "query": "Young adult starting credit",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q062",
+        "query": "Foodie looking for dining rewards",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q063",
+        "query": "Need airport lounge access when I travel",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q064",
+        "query": "Maximum cashback with travel rewards and no fees",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q065",
+        "query": "Card for shopping at department stores",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            4,
+            3
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q066",
+        "query": "Zero fee but maximum perks",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q067",
+        "query": "Card that helps with business accounting",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            3,
+            2,
+            5
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q068",
+        "query": "I eat out frequently at restaurants",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q069",
+        "query": "I have very poor credit but want the best rewards",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q070",
+        "query": "Going on vacation, want to save on flights",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            99,
+            2
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            99,
+            3
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q071",
+        "query": "Need a card to build my credit",
+        "expected": [
+          "card_006",
+          "card_007",
+          "card_008"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q072",
+        "query": "Free card but want the best rewards",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q073",
+        "query": "Simple cash rewards card",
+        "expected": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q074",
+        "query": "Credit card for foreign travel",
+        "expected": [
+          "card_013",
+          "card_018",
+          "card_024"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q075",
+        "query": "Card for business travel and expenses",
+        "expected": [
+          "card_016",
+          "card_008",
+          "card_011"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            5,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q076",
+        "query": "What's your most popular card?",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q077",
+        "query": "No-fee card with concierge service",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            5
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q078",
+        "query": "Need to establish credit history",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q079",
+        "query": "No fee but with high rewards rate",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q080",
+        "query": "First time applicant, what are my options?",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q081",
+        "query": "Travel often but have poor credit",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q082",
+        "query": "Best travel card for someone who can't get premium",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q083",
+        "query": "Building credit but also want travel rewards",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q084",
+        "query": "College student with good income, want premium rew",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q085",
+        "query": "Minimize credit card costs",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            99,
+            5
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q086",
+        "query": "Student need business features but has no credit",
+        "expected": [
+          "card_022",
+          "card_008",
+          "card_011"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            5
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q087",
+        "query": "Zero fee card with premium benefits",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q088",
+        "query": "Need a card as a college freshman",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q089",
+        "query": "Just became adult, need credit card",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q090",
+        "query": "I need a business card but don't want annual fees",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            99,
+            5
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            99,
+            4
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q091",
+        "query": "Most recommended credit card",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q092",
+        "query": "Lowest cost credit card",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q093",
+        "query": "Looking for a business card for my company",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            99,
+            4
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q094",
+        "query": "Big household, lots of food purchases",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q095",
+        "query": "Cheapest credit card option",
+        "expected": [
+          "card_006",
+          "card_007",
+          "card_001"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q096",
+        "query": "Don't want to pay for privileges I won't use",
+        "expected": [
+          "card_022",
+          "card_001",
+          "card_002"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            1,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q097",
+        "query": "I don't want to waste money on fees",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q098",
+        "query": "No credit check card",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q099",
+        "query": "Earn rewards without doing anything",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q100",
+        "query": "First card with no credit history",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q101",
+        "query": "Grad student needing business features on student ",
+        "expected": [
+          "card_022",
+          "card_008",
+          "card_011"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            99,
+            3
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q102",
+        "query": "Earn cash on every purchase",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q103",
+        "query": "I'm a freshman in college, never had a card before",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q104",
+        "query": "Just started working, need something basic",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q105",
+        "query": "Weekly grocery trips",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            3
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2,
+            4,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q106",
+        "query": "What's the best card for gas stations?",
+        "expected": [
+          "card_005",
+          "card_006",
+          "card_019"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q107",
+        "query": "Don't want to pay but need travel insurance",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q108",
+        "query": "Frequent traveler card",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            99,
+            5
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q109",
+        "query": "Building credit for the first time",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q110",
+        "query": "Recommend a card for my startup",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            2,
+            99
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q111",
+        "query": "Just give me a straightforward card",
+        "expected": [
+          "card_005",
+          "card_006",
+          "card_019"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q112",
+        "query": "Family of 4, lots of grocery shopping",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            4,
+            3
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q113",
+        "query": "Bitcoin rewards credit card",
+        "expected": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            5
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            2,
+            4,
+            1
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q114",
+        "query": "Separate business from personal",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            99,
+            5
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            5,
+            4
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q115",
+        "query": "I don't want to pay any annual fee",
+        "expected": [
+          "card_018",
+          "card_026",
+          "card_040"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q116",
+        "query": "No foreign transaction fees",
+        "expected": [
+          "card_014",
+          "card_018",
+          "card_026"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q117",
+        "query": "Business travel benefits but also need cashback",
+        "expected": [
+          "card_016",
+          "card_008",
+          "card_011"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q118",
+        "query": "Zero annual fee with lounge access",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            5,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            99,
+            99,
+            1
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q119",
+        "query": "Card for international travel no foreign fees",
+        "expected": [
+          "card_018",
+          "card_013",
+          "card_024"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q120",
+        "query": "Best cards for someone with 800 credit score",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q121",
+        "query": "Don't want to track categories",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            4,
+            99,
+            2
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            3,
+            4
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q122",
+        "query": "Excellent credit card recommendations",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q123",
+        "query": "First time using credit, very nervous",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q124",
+        "query": "Lots of dinners with clients",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q125",
+        "query": "Beginner credit card options",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q126",
+        "query": "No fee but want premium travel benefits",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_018"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q127",
+        "query": "New to credit, need guidance",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q128",
+        "query": "Best card for Amazon purchases",
+        "expected": [
+          "card_001",
+          "card_031",
+          "card_002"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            2,
+            1,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            2,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q129",
+        "query": "Business spending management",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            4,
+            99,
+            5
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            5,
+            2
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q130",
+        "query": "Student who wants premium travel card",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q131",
+        "query": "Something for managing business costs",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            99,
+            3
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            4,
+            3
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q132",
+        "query": "No cost card with travel credits",
+        "expected": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q133",
+        "query": "Frequent business trips, need travel benefits",
+        "expected": [
+          "card_016",
+          "card_008",
+          "card_011"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            3,
+            99,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q134",
+        "query": "Keep it easy, I don't want to think about it",
+        "expected": [
+          "card_005",
+          "card_006",
+          "card_019"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q135",
+        "query": "Need business rewards but on a budget",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5,
+          "positions": [
+            99,
+            5,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q136",
+        "query": "Want to make my trips more affordable",
+        "expected": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q137",
+        "query": "Young person getting first credit card",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q138",
+        "query": "Looking for a crypto credit card",
+        "expected": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            2,
+            99,
+            5
+          ]
+        },
+        "pg": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1,
+          "positions": [
+            1,
+            4,
+            3
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q139",
+        "query": "I'll be traveling to Europe soon",
+        "expected": [
+          "card_013",
+          "card_018",
+          "card_024"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q140",
+        "query": "Card for online shopping rewards",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q141",
+        "query": "Startup founder, excellent credit, want premium wi",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "hard",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q142",
+        "query": "Best card for university student",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q143",
+        "query": "What do you recommend?",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "expert",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2,
+          "positions": [
+            99,
+            99,
+            2
+          ]
+        },
+        "improvement": "IMPROVED"
+      },
+      {
+        "query_id": "q144",
+        "query": "Best card for drivers",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q145",
+        "query": "Credit score over 780, what can I get?",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            3,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4,
+          "positions": [
+            99,
+            4,
+            99
+          ]
+        },
+        "improvement": "WORSE"
+      },
+      {
+        "query_id": "q146",
+        "query": "Looking for budget-friendly card",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q147",
+        "query": "What's the most economical card?",
+        "expected": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q148",
+        "query": "Something for managing business costs",
+        "expected": [
+          "card_008",
+          "card_011",
+          "card_021"
+        ],
+        "difficulty": "medium",
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            99,
+            3
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3,
+          "positions": [
+            99,
+            4,
+            3
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q149",
+        "query": "Beginner credit card options",
+        "expected": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      },
+      {
+        "query_id": "q150",
+        "query": "First credit card for a college student",
+        "expected": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "difficulty": "easy",
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "pg": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99,
+          "positions": [
+            99,
+            99,
+            99
+          ]
+        },
+        "improvement": "SAME"
+      }
+    ]
+  }
+}

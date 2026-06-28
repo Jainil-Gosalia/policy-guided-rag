@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-06-29T00:16:21.028118",
+  "experiment": "governance_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3,
+      "policy_mode": "operator",
+      "policy_weight": 5.0
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "governance",
+    "n_queries": 21,
+    "accuracy": {
+      "vanilla": {
+        "top_1": 0.7619047619047619,
+        "top_5": 0.9523809523809523,
+        "avg_pos": 6.0476190476190474,
+        "n": 21
+      },
+      "rerank_only": {
+        "top_1": 0.8571428571428571,
+        "top_5": 1.0,
+        "avg_pos": 1.2380952380952381,
+        "n": 21
+      },
+      "operator": {
+        "top_1": 0.8571428571428571,
+        "top_5": 1.0,
+        "avg_pos": 1.1428571428571428,
+        "n": 21
+      }
+    },
+    "compliance_violation_rate": {
+      "vanilla": 1.0,
+      "rerank_only": 1.0,
+      "operator": 0.0
+    },
+    "authorized_hit_rate": {
+      "vanilla": 0.9523809523809523,
+      "rerank_only": 1.0,
+      "operator": 1.0
+    },
+    "promotion": {
+      "rerank_only_auth_hits": 21,
+      "operator_auth_hits": 21,
+      "promotions_operator_only": 0
+    },
+    "authorized_significance": {
+      "comparison": "operator vs rerank_only",
+      "n": 21,
+      "top_1_mcnemar": {
+        "b01_only_B_correct": 0,
+        "b10_only_A_correct": 0,
+        "discordant": 0,
+        "p_value": 1.0,
+        "significant_at_0.05": false
+      },
+      "top_5_mcnemar": {
+        "b01_only_B_correct": 0,
+        "b10_only_A_correct": 0,
+        "discordant": 0,
+        "p_value": 1.0,
+        "significant_at_0.05": false
+      },
+      "position_wilcoxon": {
+        "statistic": null,
+        "p_value": null,
+        "non_tied_pairs": 0,
+        "significant_at_0.05": false
+      },
+      "mean_position_improvement_ci": {
+        "mean": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 21
+      }
+    },
+    "latency_ms": {
+      "mean": 404.245399999733,
+      "p50": 407.6098000005004,
+      "p95": 445.78679999904125,
+      "max": 489.7038999988581
+    }
+  }
+}

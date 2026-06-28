@@ -1,0 +1,281 @@
+[
+  {
+    "id": "gq001",
+    "query": "I think I clicked a phishing link and my account looks wrong \u2014 what do I do first?",
+    "topic": "incident_response",
+    "subtopic": "report",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_incident_response_report_current",
+      "doc_incident_response_report_deprecated"
+    ],
+    "authorized_doc": "doc_incident_response_report_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq002",
+    "query": "There's a major suspected attack causing an outage; who needs to be paged right now?",
+    "topic": "incident_response",
+    "subtopic": "escalate",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_incident_response_escalate_current",
+      "doc_incident_response_escalate_restricted"
+    ],
+    "authorized_doc": "doc_incident_response_escalate_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq003",
+    "query": "My work laptop might be compromised \u2014 should I power it off or leave it running?",
+    "topic": "incident_response",
+    "subtopic": "evidence",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_incident_response_evidence_current",
+      "doc_incident_response_evidence_eu",
+      "doc_incident_response_evidence_hold"
+    ],
+    "authorized_doc": "doc_incident_response_evidence_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq004",
+    "query": "In our EU office, should I shut down a possibly-hacked laptop?",
+    "topic": "incident_response",
+    "subtopic": "evidence",
+    "region": "EU",
+    "expected_topic_docs": [
+      "doc_incident_response_evidence_current",
+      "doc_incident_response_evidence_eu",
+      "doc_incident_response_evidence_hold"
+    ],
+    "authorized_doc": "doc_incident_response_evidence_eu",
+    "difficulty": "hard"
+  },
+  {
+    "id": "gq005",
+    "query": "We're expecting a baby soon \u2014 do I qualify for leave and what do I need to provide?",
+    "topic": "parental_leave",
+    "subtopic": "eligibility",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_parental_leave_eligibility_current",
+      "doc_parental_leave_eligibility_deprecated"
+    ],
+    "authorized_doc": "doc_parental_leave_eligibility_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq006",
+    "query": "How many weeks off do new parents get and is it fully paid?",
+    "topic": "parental_leave",
+    "subtopic": "duration",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_parental_leave_duration_current",
+      "doc_parental_leave_duration_restricted"
+    ],
+    "authorized_doc": "doc_parental_leave_duration_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq007",
+    "query": "Coming back after having a child \u2014 how do I phase in and restore my benefits?",
+    "topic": "parental_leave",
+    "subtopic": "return",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_parental_leave_return_current",
+      "doc_parental_leave_return_hold",
+      "doc_parental_leave_return_us"
+    ],
+    "authorized_doc": "doc_parental_leave_return_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq008",
+    "query": "I'm in the US office \u2014 how do I phase back after parental leave?",
+    "topic": "parental_leave",
+    "subtopic": "return",
+    "region": "US",
+    "expected_topic_docs": [
+      "doc_parental_leave_return_current",
+      "doc_parental_leave_return_hold",
+      "doc_parental_leave_return_us"
+    ],
+    "authorized_doc": "doc_parental_leave_return_us",
+    "difficulty": "hard"
+  },
+  {
+    "id": "gq009",
+    "query": "I paid for a client dinner out of pocket \u2014 how do I get my money back?",
+    "topic": "expense_reimbursement",
+    "subtopic": "submit",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_expense_reimbursement_submit_current",
+      "doc_expense_reimbursement_submit_deprecated"
+    ],
+    "authorized_doc": "doc_expense_reimbursement_submit_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq010",
+    "query": "Do I need to keep the paper slips for small purchases on a trip?",
+    "topic": "expense_reimbursement",
+    "subtopic": "receipts",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_expense_reimbursement_receipts_current",
+      "doc_expense_reimbursement_receipts_restricted"
+    ],
+    "authorized_doc": "doc_expense_reimbursement_receipts_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq011",
+    "query": "What's the daily food allowance when I'm traveling for work?",
+    "topic": "expense_reimbursement",
+    "subtopic": "perdiem",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_expense_reimbursement_perdiem_current",
+      "doc_expense_reimbursement_perdiem_eu",
+      "doc_expense_reimbursement_perdiem_hold"
+    ],
+    "authorized_doc": "doc_expense_reimbursement_perdiem_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq012",
+    "query": "What's the daily meal allowance for travel in Europe (EU)?",
+    "topic": "expense_reimbursement",
+    "subtopic": "perdiem",
+    "region": "EU",
+    "expected_topic_docs": [
+      "doc_expense_reimbursement_perdiem_current",
+      "doc_expense_reimbursement_perdiem_eu",
+      "doc_expense_reimbursement_perdiem_hold"
+    ],
+    "authorized_doc": "doc_expense_reimbursement_perdiem_eu",
+    "difficulty": "hard"
+  },
+  {
+    "id": "gq013",
+    "query": "How many years do we have to keep old invoices and signed contracts?",
+    "topic": "data_retention",
+    "subtopic": "periods",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_data_retention_periods_current",
+      "doc_data_retention_periods_deprecated"
+    ],
+    "authorized_doc": "doc_data_retention_periods_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq014",
+    "query": "We have boxes of old files \u2014 how do we get approval to shred them?",
+    "topic": "data_retention",
+    "subtopic": "disposal",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_data_retention_disposal_current",
+      "doc_data_retention_disposal_restricted"
+    ],
+    "authorized_doc": "doc_data_retention_disposal_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq015",
+    "query": "Legal told us not to delete anything for a case \u2014 what does that mean for our files?",
+    "topic": "data_retention",
+    "subtopic": "hold",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_data_retention_hold_current",
+      "doc_data_retention_hold_hold"
+    ],
+    "authorized_doc": "doc_data_retention_hold_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq016",
+    "query": "I'm working from home and can't reach internal systems \u2014 how do I get connected?",
+    "topic": "vpn_access",
+    "subtopic": "setup",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_vpn_access_setup_current",
+      "doc_vpn_access_setup_deprecated"
+    ],
+    "authorized_doc": "doc_vpn_access_setup_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq017",
+    "query": "It's asking for a second factor when I connect remotely \u2014 how do I set that up?",
+    "topic": "vpn_access",
+    "subtopic": "mfa",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_vpn_access_mfa_current",
+      "doc_vpn_access_mfa_restricted"
+    ],
+    "authorized_doc": "doc_vpn_access_mfa_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq018",
+    "query": "My remote connection keeps dropping and won't authenticate \u2014 how do I fix it?",
+    "topic": "vpn_access",
+    "subtopic": "trouble",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_vpn_access_trouble_current",
+      "doc_vpn_access_trouble_hold"
+    ],
+    "authorized_doc": "doc_vpn_access_trouble_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq019",
+    "query": "A client is coming next week \u2014 how do I arrange a badge for them ahead of time?",
+    "topic": "visitor_badges",
+    "subtopic": "prereg",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_visitor_badges_prereg_current",
+      "doc_visitor_badges_prereg_deprecated"
+    ],
+    "authorized_doc": "doc_visitor_badges_prereg_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq020",
+    "query": "What does a guest do when they arrive at the front desk?",
+    "topic": "visitor_badges",
+    "subtopic": "signin",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_visitor_badges_signin_current",
+      "doc_visitor_badges_signin_restricted"
+    ],
+    "authorized_doc": "doc_visitor_badges_signin_current",
+    "difficulty": "medium"
+  },
+  {
+    "id": "gq021",
+    "query": "Can a guest walk around the building alone or do I need to stay with them?",
+    "topic": "visitor_badges",
+    "subtopic": "escort",
+    "region": null,
+    "expected_topic_docs": [
+      "doc_visitor_badges_escort_current",
+      "doc_visitor_badges_escort_hold"
+    ],
+    "authorized_doc": "doc_visitor_badges_escort_current",
+    "difficulty": "medium"
+  }
+]

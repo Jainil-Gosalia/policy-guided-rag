@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software or its findings, please cite it as below."
+title: "Policy-Guided RAG: Asymmetric Visibility for Controllable Retrieval"
+abstract: >-
+  A retrieval architecture in which hidden guidance influences cross-encoder
+  re-ranking via an explicit BOOST/DEMOTE/EXCLUDE policy operator, while being
+  structurally filtered out before reaching the language model — enabling hidden
+  business or safety policies to shape retrieval rankings with a zero-leakage
+  guarantee.
+authors:
+  - family-names: Gosalia
+    given-names: Jainil
+type: software
+license: MIT
+version: 0.1.0
+date-released: 2026-06-18
+keywords:
+  - retrieval-augmented generation
+  - re-ranking
+  - cross-encoder
+  - controllable retrieval
+  - LLM safety
+  - guardrails
+repository-code: "https://github.com/Jainil-Gosalia/policy-guided-rag"
+preferred-citation:
+  type: article
+  title: "Policy-Guided RAG: Asymmetric Visibility for Controllable Retrieval"
+  authors:
+    - family-names: Gosalia
+      given-names: Jainil
+  year: 2026

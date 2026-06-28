@@ -1,0 +1,295 @@
+{
+  "num_queries": 15,
+  "vanilla": {
+    "top_1_accuracy": 0.6,
+    "top_5_accuracy": 0.8,
+    "avg_position": 21.0,
+    "positions": [
+      1,
+      99,
+      1,
+      99,
+      1,
+      3,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      4,
+      1,
+      99
+    ]
+  },
+  "policy_guided": {
+    "top_1_accuracy": 0.5333333333333333,
+    "top_5_accuracy": 1.0,
+    "avg_position": 1.6666666666666667,
+    "positions": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      5,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+    ]
+  },
+  "improvement": {
+    "top_1_delta": -0.06666666666666667,
+    "top_5_delta": 0.2,
+    "position_delta": 19.333333333333332,
+    "queries_improved": 0.26666666666666666
+  },
+  "detailed": [
+    {
+      "query": "business expenses for my startup",
+      "expected": "card_5",
+      "category": "business",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "I don't want to pay any annual fee",
+      "expected": "card_2",
+      "category": "no_fee",
+      "vanilla": {
+        "top_1": false,
+        "top_5": false,
+        "position": 99
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "improvement": "IMPROVED"
+    },
+    {
+      "query": "I drive to work and need gas rewards",
+      "expected": "card_10",
+      "category": "gas",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "I have excellent credit score 780",
+      "expected": "card_1",
+      "category": "excellent",
+      "vanilla": {
+        "top_1": false,
+        "top_5": false,
+        "position": 99
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "improvement": "IMPROVED"
+    },
+    {
+      "query": "I'm a college student with no credit",
+      "expected": "card_4",
+      "category": "student",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "looking for a card with airport lounge a",
+      "expected": "card_1",
+      "category": "lounge",
+      "vanilla": {
+        "top_1": false,
+        "top_5": true,
+        "position": 3
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 5
+      },
+      "improvement": "WORSE"
+    },
+    {
+      "query": "best card for dining and restaurants",
+      "expected": "card_6",
+      "category": "dining",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "improvement": "WORSE"
+    },
+    {
+      "query": "I need to build my credit score",
+      "expected": "card_9",
+      "category": "building_credit",
+      "vanilla": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "shopping on amazon and whole foods",
+      "expected": "card_11",
+      "category": "shopping",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "crypto rewards and bitcoin back",
+      "expected": "card_14",
+      "category": "crypto",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "international travel no foreign fees",
+      "expected": "card_15",
+      "category": "international",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "airline miles and free checked bags",
+      "expected": "card_12",
+      "category": "airline",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "simple cashback on everything",
+      "expected": "card_7",
+      "category": "simple",
+      "vanilla": {
+        "top_1": false,
+        "top_5": true,
+        "position": 4
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "improvement": "IMPROVED"
+    },
+    {
+      "query": "hotel rewards and gold status",
+      "expected": "card_6",
+      "category": "hotels",
+      "vanilla": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "pg": {
+        "top_1": true,
+        "top_5": true,
+        "position": 1
+      },
+      "improvement": "same"
+    },
+    {
+      "query": "premium card with best travel benefits",
+      "expected": "card_8",
+      "category": "premium",
+      "vanilla": {
+        "top_1": false,
+        "top_5": false,
+        "position": 99
+      },
+      "pg": {
+        "top_1": false,
+        "top_5": true,
+        "position": 2
+      },
+      "improvement": "IMPROVED"
+    }
+  ]
+}

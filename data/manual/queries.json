@@ -1,0 +1,107 @@
+[
+  {
+    "id": "q1",
+    "query": "I need a credit card with airport lounge access",
+    "expected_top_cards": ["card_1", "card_3"],
+    "guidance_should_apply": ["guidance_1"],
+    "notes": "Lounge cards with Priority Pass: Premium Rewards Plus, Travel Elite."
+  },
+  {
+    "id": "q2",
+    "query": "Best credit card for a college student with no credit history",
+    "expected_top_cards": ["card_4"],
+    "guidance_should_apply": ["guidance_2"],
+    "notes": "Student Starter is the only student-tagged card."
+  },
+  {
+    "id": "q3",
+    "query": "I want a card with no annual fee",
+    "expected_top_cards": ["card_2", "card_4", "card_7"],
+    "guidance_should_apply": ["guidance_3"],
+    "notes": "No-fee everyday cards (excluding niche secured/co-branded)."
+  },
+  {
+    "id": "q4",
+    "query": "Credit card for international travel with insurance",
+    "expected_top_cards": ["card_1", "card_3", "card_15"],
+    "guidance_should_apply": ["guidance_4"],
+    "notes": "Travel cards with insurance / no foreign transaction fee."
+  },
+  {
+    "id": "q5",
+    "query": "Small business credit card for office expenses",
+    "expected_top_cards": ["card_5"],
+    "guidance_should_apply": ["guidance_5"],
+    "notes": "Business Pro is the only business-tagged card."
+  },
+  {
+    "id": "q6",
+    "query": "I have excellent credit (780), what premium card should I get?",
+    "expected_top_cards": ["card_1", "card_3", "card_8"],
+    "guidance_should_apply": ["guidance_6"],
+    "notes": "Premium cards appropriate for excellent credit."
+  },
+  {
+    "id": "q7",
+    "query": "Everyday spending cashback card",
+    "expected_top_cards": ["card_2"],
+    "guidance_should_apply": [],
+    "notes": "Everyday Cashback is the cashback-tagged daily card."
+  },
+  {
+    "id": "q8",
+    "query": "Card with good rewards and lounge access, but lower annual fee",
+    "expected_top_cards": ["card_3", "card_6"],
+    "guidance_should_apply": ["guidance_1", "guidance_3"],
+    "notes": "Lounge cards with relatively lower fee than Platinum Elite."
+  },
+  {
+    "id": "q9",
+    "query": "I drive to work and need gas rewards",
+    "expected_top_cards": ["card_10"],
+    "guidance_should_apply": [],
+    "notes": "Gas & Transit is the only gas-tagged card."
+  },
+  {
+    "id": "q10",
+    "query": "Best card for dining and restaurants",
+    "expected_top_cards": ["card_6"],
+    "guidance_should_apply": [],
+    "notes": "Gold Status is the only dining-tagged card."
+  },
+  {
+    "id": "q11",
+    "query": "I need to build my credit score",
+    "expected_top_cards": ["card_4", "card_9"],
+    "guidance_should_apply": ["guidance_2"],
+    "notes": "Building-credit cards: Student Starter and Secured."
+  },
+  {
+    "id": "q12",
+    "query": "Shopping on Amazon and Whole Foods",
+    "expected_top_cards": ["card_11", "card_13"],
+    "guidance_should_apply": [],
+    "notes": "Shopping/retail cards: Amazon Prime, Retail Rewards."
+  },
+  {
+    "id": "q13",
+    "query": "Crypto rewards and bitcoin back",
+    "expected_top_cards": ["card_14"],
+    "guidance_should_apply": [],
+    "notes": "Crypto Card is the only crypto-tagged card."
+  },
+  {
+    "id": "q14",
+    "query": "International travel with no foreign transaction fees",
+    "expected_top_cards": ["card_15"],
+    "guidance_should_apply": ["guidance_4"],
+    "notes": "International Travel card has the no-fee-foreign tag."
+  },
+  {
+    "id": "q15",
+    "query": "Premium card with the best travel benefits",
+    "expected_top_cards": ["card_8", "card_1", "card_3"],
+    "guidance_should_apply": ["guidance_4"],
+    "notes": "Ultra-premium / premium travel cards."
+  }
+]

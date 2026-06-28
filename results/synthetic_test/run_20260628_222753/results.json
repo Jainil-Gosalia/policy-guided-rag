@@ -1,0 +1,3698 @@
+{
+  "timestamp": "2026-06-28T22:27:53.409289",
+  "experiment": "synthetic_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "synthetic",
+    "accuracy_subset_n": 139,
+    "accuracy": {
+      "vanilla": {
+        "top_1_accuracy": 0.2805755395683453,
+        "top_5_accuracy": 0.6690647482014388,
+        "avg_position": 34.34532374100719,
+        "n": 139
+      },
+      "rerank_only": {
+        "top_1_accuracy": 0.2517985611510791,
+        "top_5_accuracy": 0.6690647482014388,
+        "avg_position": 34.33812949640288,
+        "n": 139
+      },
+      "policy_guided": {
+        "top_1_accuracy": 0.20863309352517986,
+        "top_5_accuracy": 0.6546762589928058,
+        "avg_position": 35.86330935251799,
+        "n": 139
+      }
+    },
+    "significance": {
+      "rerank_only_vs_vanilla": {
+        "comparison": "rerank_only vs vanilla",
+        "n": 139,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 13,
+          "b10_only_A_correct": 17,
+          "discordant": 30,
+          "p_value": 0.5846647117286922,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 14,
+          "b10_only_A_correct": 14,
+          "discordant": 28,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 1405.0,
+          "p_value": 0.915484901929504,
+          "non_tied_pairs": 75,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 0.007194244604316547,
+          "ci_low": -7.0071942446043165,
+          "ci_high": 7.39568345323741,
+          "n": 139
+        }
+      },
+      "policy_guided_vs_vanilla": {
+        "comparison": "policy_guided vs vanilla",
+        "n": 139,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 12,
+          "b10_only_A_correct": 22,
+          "discordant": 34,
+          "p_value": 0.12144948495551944,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 15,
+          "b10_only_A_correct": 17,
+          "discordant": 32,
+          "p_value": 0.860050065908581,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 1430.0,
+          "p_value": 0.461419934762499,
+          "non_tied_pairs": 79,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": -1.5179856115107915,
+          "ci_low": -9.16546762589928,
+          "ci_high": 6.093525179856115,
+          "n": 139
+        }
+      },
+      "policy_guided_vs_rerank_only": {
+        "comparison": "policy_guided vs rerank_only",
+        "n": 139,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 8,
+          "b10_only_A_correct": 14,
+          "discordant": 22,
+          "p_value": 0.28627872467041016,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 9,
+          "b10_only_A_correct": 11,
+          "discordant": 20,
+          "p_value": 0.8238029479980469,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 742.5,
+          "p_value": 0.2797643249866939,
+          "non_tied_pairs": 59,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": -1.525179856115108,
+          "ci_low": -7.654676258992806,
+          "ci_high": 4.474820143884892,
+          "n": 139
+        }
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "n": 45,
+        "rerank_only": {
+          "top_1_accuracy": 0.26666666666666666,
+          "top_5_accuracy": 0.7333333333333333,
+          "avg_position": 28.044444444444444,
+          "n": 45
+        },
+        "policy_guided": {
+          "top_1_accuracy": 0.2222222222222222,
+          "top_5_accuracy": 0.7555555555555555,
+          "avg_position": 26.244444444444444,
+          "n": 45
+        }
+      },
+      "medium": {
+        "n": 53,
+        "rerank_only": {
+          "top_1_accuracy": 0.24528301886792453,
+          "top_5_accuracy": 0.660377358490566,
+          "avg_position": 35.22641509433962,
+          "n": 53
+        },
+        "policy_guided": {
+          "top_1_accuracy": 0.20754716981132076,
+          "top_5_accuracy": 0.6981132075471698,
+          "avg_position": 31.754716981132077,
+          "n": 53
+        }
+      },
+      "hard": {
+        "n": 37,
+        "rerank_only": {
+          "top_1_accuracy": 0.24324324324324326,
+          "top_5_accuracy": 0.5675675675675675,
+          "avg_position": 44.13513513513514,
+          "n": 37
+        },
+        "policy_guided": {
+          "top_1_accuracy": 0.1891891891891892,
+          "top_5_accuracy": 0.4594594594594595,
+          "avg_position": 54.432432432432435,
+          "n": 37
+        }
+      },
+      "expert": {
+        "n": 4,
+        "rerank_only": {
+          "top_1_accuracy": 0.25,
+          "top_5_accuracy": 1.0,
+          "avg_position": 2.75,
+          "n": 4
+        },
+        "policy_guided": {
+          "top_1_accuracy": 0.25,
+          "top_5_accuracy": 0.75,
+          "avg_position": 26.75,
+          "n": 4
+        }
+      }
+    },
+    "controllability": {
+      "n": 98,
+      "mean_rank": {
+        "vanilla": 74.93367346938776,
+        "rerank_only": 70.56785714285714,
+        "policy_guided": 70.12653061224489
+      },
+      "topn_hit_rate": {
+        "vanilla": 0.6224489795918368,
+        "rerank_only": 0.6938775510204082,
+        "policy_guided": 0.7346938775510204
+      },
+      "steering_lift_ci": {
+        "mean": 0.441326530612245,
+        "ci_low": -1.7331632653061224,
+        "ci_high": 2.4928571428571424,
+        "n": 98
+      }
+    },
+    "detailed": [
+      {
+        "id": "q001",
+        "query": "Shop at supermarket every week",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_031"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q002",
+        "query": "International travel with no credit history",
+        "difficulty": "hard",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q003",
+        "query": "Undergraduate needs business card for internship",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q004",
+        "query": "Freelancer wants business card with cashback",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q005",
+        "query": "Planning a honeymoon, need travel rewards",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q006",
+        "query": "Looking for top-tier benefits",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q007",
+        "query": "Business card for side hustle with no fees",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q008",
+        "query": "Zero annual cost credit card",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q009",
+        "query": "I shop a lot at Amazon, which card?",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q010",
+        "query": "Card for LLC expenses",
+        "difficulty": "easy",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q011",
+        "query": "Expense tracking for my side hustle",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q012",
+        "query": "Separate business from personal",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q013",
+        "query": "Looking for airline miles rewards",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q015",
+        "query": "Keep it simple, no extra costs",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q016",
+        "query": "Best card for drivers",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q017",
+        "query": "Travel often but have poor credit",
+        "difficulty": "hard",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q018",
+        "query": "Need a card for business purchases",
+        "difficulty": "easy",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q019",
+        "query": "Foodie looking for dining rewards",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_007"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q020",
+        "query": "I need a credit card for my startup business expen",
+        "difficulty": "easy",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q021",
+        "query": "Free card but want the best rewards",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q022",
+        "query": "Travel rewards with no foreign transaction fees",
+        "difficulty": "hard",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q023",
+        "query": "Track business spending with credit card",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q024",
+        "query": "Zero fee card with premium benefits",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q025",
+        "query": "Free card but airport lounge access",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q027",
+        "query": "Recommend a card with no fees",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q028",
+        "query": "Travel abroad next month",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q029",
+        "query": "College senior with good income seeking premium",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q030",
+        "query": "Corporate card for expenses",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q031",
+        "query": "I'm a freshman in college, never had a card before",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q032",
+        "query": "Restaurants and food delivery",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_007"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q033",
+        "query": "Find me a card with zero annual fee",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q036",
+        "query": "Business travel benefits but also need cashback",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q037",
+        "query": "Small business owner seeking premium without high ",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q038",
+        "query": "Just became adult, need credit card",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q039",
+        "query": "Student need business features but has no credit",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q040",
+        "query": "Just started working, need something basic",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q041",
+        "query": "First time using credit, very nervous",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q042",
+        "query": "No cost card with travel credits",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q043",
+        "query": "Save money on credit card fees",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q044",
+        "query": "Best card for Amazon purchases",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q045",
+        "query": "No annual fee but high rewards rate",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q046",
+        "query": "First time applicant, what are my options?",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q047",
+        "query": "Want luxury travel perks",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q049",
+        "query": "Building credit but also want travel rewards",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q050",
+        "query": "Minimize credit card costs",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q051",
+        "query": "Don't want to pay but need travel insurance",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q052",
+        "query": "I run my own company and need to track expenses",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q053",
+        "query": "Need to separate personal and business spending",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q054",
+        "query": "Card for graduate student",
+        "difficulty": "easy",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q055",
+        "query": "Company expenses but also personal groceries on sa",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q056",
+        "query": "Looking for a card with lounge benefits",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q057",
+        "query": "No foreign transaction fees",
+        "difficulty": "easy",
+        "gold": [
+          "card_016",
+          "card_020",
+          "card_028"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q058",
+        "query": "Credit card with airport club access",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q059",
+        "query": "I do most of my shopping at grocery stores",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_031"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q060",
+        "query": "Don't mind paying for premium benefits",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q061",
+        "query": "High credit score rewards card",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q062",
+        "query": "Building credit for the first time",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q063",
+        "query": "No credit check card",
+        "difficulty": "easy",
+        "gold": [
+          "card_002",
+          "card_003",
+          "card_009"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q065",
+        "query": "What's the best travel rewards card?",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q067",
+        "query": "Getting started with credit",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q068",
+        "query": "I don't want to waste money on fees",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q069",
+        "query": "One card for everything",
+        "difficulty": "expert",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q070",
+        "query": "What's the most prestigious card?",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q071",
+        "query": "Best card for university student",
+        "difficulty": "easy",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q072",
+        "query": "Startup with no revenue, need free business card",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q073",
+        "query": "Crypto back on purchases",
+        "difficulty": "easy",
+        "gold": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q074",
+        "query": "Earn cash on every purchase",
+        "difficulty": "easy",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q075",
+        "query": "Card for fuel purchases",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q077",
+        "query": "Zero annual fee with lounge access",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q078",
+        "query": "Weekly grocery trips",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_031"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q079",
+        "query": "College student with good income, want premium rew",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q080",
+        "query": "Need to establish credit history",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q081",
+        "query": "Business card for startup with no personal guarant",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q082",
+        "query": "Lounge access but don't want high annual fee",
+        "difficulty": "hard",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q083",
+        "query": "Freshman with part-time job, need to earn rewards",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q084",
+        "query": "Graduate student wants premium rewards card",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q085",
+        "query": "What's the most economical card?",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q086",
+        "query": "Student who wants premium travel card",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q087",
+        "query": "Student but parents said must have no fees",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q088",
+        "query": "I want to earn cash on my spending",
+        "difficulty": "easy",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q089",
+        "query": "Need expense reports for my company",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q090",
+        "query": "Budget card with luxury perks",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q092",
+        "query": "Something for managing business costs",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q093",
+        "query": "No yearly fee card options",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q094",
+        "query": "Lowest cost credit card",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q095",
+        "query": "I want the best rewards possible",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q096",
+        "query": "Eat at restaurants often",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_007"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q097",
+        "query": "Looking for budget-friendly card",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q098",
+        "query": "I'll be traveling to Europe soon",
+        "difficulty": "easy",
+        "gold": [
+          "card_016",
+          "card_020",
+          "card_028"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q099",
+        "query": "I just want basic functionality",
+        "difficulty": "expert",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q100",
+        "query": "Gas rewards card",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q101",
+        "query": "No-fee card with concierge service",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q102",
+        "query": "Card for overseas travel",
+        "difficulty": "easy",
+        "gold": [
+          "card_016",
+          "card_020",
+          "card_028"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q103",
+        "query": "Want to make my trips more affordable",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q104",
+        "query": "Don't want to pay for privileges I won't use",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q105",
+        "query": "New to credit, need guidance",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q106",
+        "query": "Card for rebuilding credit",
+        "difficulty": "easy",
+        "gold": [
+          "card_002",
+          "card_003",
+          "card_009"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q107",
+        "query": "Startup founder, excellent credit, want premium wi",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q108",
+        "query": "Simple cash rewards card",
+        "difficulty": "easy",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q109",
+        "query": "Cheapest credit card option",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q110",
+        "query": "Best cards for someone with 800 credit score",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q112",
+        "query": "Family of 4, lots of grocery shopping",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_031"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q113",
+        "query": "Beginner credit card options",
+        "difficulty": "easy",
+        "gold": [
+          "card_002",
+          "card_003",
+          "card_009"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q114",
+        "query": "Frequent business trips, need travel benefits",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q115",
+        "query": "Best card to use abroad",
+        "difficulty": "easy",
+        "gold": [
+          "card_016",
+          "card_020",
+          "card_028"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q116",
+        "query": "Best card for frequent flyers",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q117",
+        "query": "I need a business card but don't want annual fees",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q118",
+        "query": "Best travel card for someone who can't get premium",
+        "difficulty": "hard",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q119",
+        "query": "Co-branded store card",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q120",
+        "query": "Credit score over 780, what can I get?",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_024",
+          "card_030"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q121",
+        "query": "Don't complicate my life",
+        "difficulty": "expert",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q122",
+        "query": "No foreign transaction fee card",
+        "difficulty": "easy",
+        "gold": [
+          "card_016",
+          "card_020",
+          "card_028"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q123",
+        "query": "Business spending management",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q124",
+        "query": "Just turned 18, what's my options?",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q125",
+        "query": "Looking for a corporate credit card",
+        "difficulty": "easy",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q126",
+        "query": "Need business rewards but on a budget",
+        "difficulty": "hard",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q127",
+        "query": "Big household, lots of food purchases",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_031"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q128",
+        "query": "Best card for Target and Walmart",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q129",
+        "query": "Lots of dinners with clients",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_007"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q130",
+        "query": "Grad student needing business features on student ",
+        "difficulty": "hard",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q131",
+        "query": "I eat out frequently at restaurants",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_007"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q132",
+        "query": "No fee but with high rewards rate",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q133",
+        "query": "Going on vacation, want to save on flights",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q135",
+        "query": "No fee but want premium travel benefits",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q136",
+        "query": "Card that helps with business accounting",
+        "difficulty": "medium",
+        "gold": [
+          "card_008",
+          "card_011",
+          "card_016"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q137",
+        "query": "Young person getting first credit card",
+        "difficulty": "medium",
+        "gold": [
+          "card_009",
+          "card_023",
+          "card_036"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q138",
+        "query": "What's good for retail shopping?",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q139",
+        "query": "Card that pays in cryptocurrency",
+        "difficulty": "easy",
+        "gold": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q140",
+        "query": "Best travel points card",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q141",
+        "query": "No annual fee but high rewards rate",
+        "difficulty": "hard",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q142",
+        "query": "No credit check card",
+        "difficulty": "easy",
+        "gold": [
+          "card_002",
+          "card_003",
+          "card_009"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q143",
+        "query": "Simple no brainer card",
+        "difficulty": "expert",
+        "gold": [
+          "card_004",
+          "card_048",
+          "card_049"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q144",
+        "query": "Card for airline rewards",
+        "difficulty": "easy",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q145",
+        "query": "Card for overseas travel",
+        "difficulty": "easy",
+        "gold": [
+          "card_016",
+          "card_020",
+          "card_028"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q146",
+        "query": "Looking for budget-friendly card",
+        "difficulty": "medium",
+        "gold": [
+          "card_001",
+          "card_004",
+          "card_005"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q147",
+        "query": "Want to make my trips more affordable",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        }
+      },
+      {
+        "id": "q148",
+        "query": "Frequent business trips, need travel benefits",
+        "difficulty": "medium",
+        "gold": [
+          "card_013",
+          "card_016",
+          "card_018"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 3
+        }
+      },
+      {
+        "id": "q149",
+        "query": "Bitcoin rewards credit card",
+        "difficulty": "easy",
+        "gold": [
+          "card_007",
+          "card_012",
+          "card_015"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q150",
+        "query": "What's the best card for gas stations?",
+        "difficulty": "easy",
+        "gold": [
+          "card_001",
+          "card_002",
+          "card_003"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": false,
+          "position": 99
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Data artifacts (raw datasets ARE tracked; only ephemeral stores are ignored)
+*.db
+*.sqlite
+chroma_db/
+
+# Testing / Jupyter
+.pytest_cache/
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+backup_*/
+
+# Archived cruft / superseded drafts — kept locally for provenance, not published
+docs/archive/
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# NOTE: results/ is intentionally tracked (committed run artifacts back the paper's
+# numbers). To regenerate locally without committing, see docs/EXPERIMENTS.md.

@@ -1,0 +1,11 @@
+{
+  "dataset_name": "synthetic",
+  "num_cards": 50,
+  "num_guidance": 27,
+  "num_queries": 150,
+  "files": {
+    "cards": "cards.json",
+    "guidance": "guidance.json",
+    "queries": "queries.json"
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "card_1_main",
+    "card_id": "card_1",
+    "text": "Card: Premium Rewards Plus\nAnnual Fee: $550\nRewards: dining: 3x points, travel: 5x points, other: 1x points\nBenefits: Priority Pass lounge access, Travel insurance up to $500k, Global Entry credit, No foreign transaction fees\nCredit Score Required: Excellent (750+)",
+    "type": "context"
+  },
+  {
+    "id": "card_2_main",
+    "card_id": "card_2",
+    "text": "Card: Everyday Cashback\nAnnual Fee: $0\nRewards: groceries: 3% cashback, gas: 2% cashback, other: 1% cashback\nBenefits: No annual fee, Purchase protection, Extended warranty\nCredit Score Required: Good (670+)",
+    "type": "context"
+  },
+  {
+    "id": "card_3_main",
+    "card_id": "card_3",
+    "text": "Card: Travel Elite Card\nAnnual Fee: $450\nRewards: travel: 4x points, dining: 3x points, other: 1x points\nBenefits: Airport lounge access (Priority Pass), Free checked bags, Travel insurance, Concierge service\nCredit Score Required: Excellent (740+)",
+    "type": "context"
+  },
+  {
+    "id": "card_4_main",
+    "card_id": "card_4",
+    "text": "Card: Student Starter Card\nAnnual Fee: $0\nRewards: restaurants: 2% cashback, streaming: 2% cashback, other: 1% cashback\nBenefits: No annual fee, Build credit history, Student-friendly approval\nCredit Score Required: Fair (580+)",
+    "type": "context"
+  },
+  {
+    "id": "card_5_main",
+    "card_id": "card_5",
+    "text": "Card: Business Pro Card\nAnnual Fee: $295\nRewards: office_supplies: 5x points, telecom: 3x points, other: 1x points\nBenefits: Employee cards at no extra cost, Expense management tools, Business lounge access, Purchase protection\nCredit Score Required: Good (680+)",
+    "type": "context"
+  }
+]
