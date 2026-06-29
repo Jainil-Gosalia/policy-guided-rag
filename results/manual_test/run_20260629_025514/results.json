@@ -1,0 +1,486 @@
+{
+  "timestamp": "2026-06-29T02:55:14.358679",
+  "experiment": "manual_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3,
+      "policy_mode": "operator",
+      "policy_weight": 5.0
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "manual",
+    "num_queries": 15,
+    "accuracy": {
+      "vanilla": {
+        "top_1_accuracy": 0.8666666666666667,
+        "top_5_accuracy": 1.0,
+        "avg_position": 1.1333333333333333,
+        "n": 15
+      },
+      "rerank_only": {
+        "top_1_accuracy": 0.9333333333333333,
+        "top_5_accuracy": 1.0,
+        "avg_position": 1.0666666666666667,
+        "n": 15
+      },
+      "policy_guided": {
+        "top_1_accuracy": 0.6,
+        "top_5_accuracy": 1.0,
+        "avg_position": 1.7333333333333334,
+        "n": 15
+      }
+    },
+    "significance": {
+      "rerank_only_vs_vanilla": {
+        "comparison": "rerank_only vs vanilla",
+        "n": 15,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 1,
+          "b10_only_A_correct": 0,
+          "discordant": 1,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 0,
+          "b10_only_A_correct": 0,
+          "discordant": 0,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 0.0,
+          "p_value": 0.31731050786291415,
+          "non_tied_pairs": 1,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 0.06666666666666667,
+          "ci_low": 0.0,
+          "ci_high": 0.2,
+          "n": 15
+        }
+      },
+      "policy_guided_vs_vanilla": {
+        "comparison": "policy_guided vs vanilla",
+        "n": 15,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 1,
+          "b10_only_A_correct": 5,
+          "discordant": 6,
+          "p_value": 0.21875,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 0,
+          "b10_only_A_correct": 0,
+          "discordant": 0,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 2.5,
+          "p_value": 0.08446903225325182,
+          "non_tied_pairs": 6,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": -0.6,
+          "ci_low": -1.2666666666666666,
+          "ci_high": -0.06666666666666667,
+          "n": 15
+        }
+      },
+      "policy_guided_vs_rerank_only": {
+        "comparison": "policy_guided vs rerank_only",
+        "n": 15,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 0,
+          "b10_only_A_correct": 5,
+          "discordant": 5,
+          "p_value": 0.0625,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 0,
+          "b10_only_A_correct": 0,
+          "discordant": 0,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 0.0,
+          "p_value": 0.039359508888249725,
+          "non_tied_pairs": 5,
+          "significant_at_0.05": true
+        },
+        "mean_position_improvement_ci": {
+          "mean": -0.6666666666666666,
+          "ci_low": -1.3333333333333333,
+          "ci_high": -0.13333333333333333,
+          "n": 15
+        }
+      }
+    },
+    "detailed": [
+      {
+        "id": "q1",
+        "query": "I need a credit card with airport lounge access",
+        "gold": [
+          "card_1",
+          "card_3"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q2",
+        "query": "Best credit card for a college student with no cre",
+        "gold": [
+          "card_4"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q3",
+        "query": "I want a card with no annual fee",
+        "gold": [
+          "card_2",
+          "card_4",
+          "card_7"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q4",
+        "query": "Credit card for international travel with insuranc",
+        "gold": [
+          "card_1",
+          "card_3",
+          "card_15"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q5",
+        "query": "Small business credit card for office expenses",
+        "gold": [
+          "card_5"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q6",
+        "query": "I have excellent credit (780), what premium card s",
+        "gold": [
+          "card_1",
+          "card_3",
+          "card_8"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q7",
+        "query": "Everyday spending cashback card",
+        "gold": [
+          "card_2"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q8",
+        "query": "Card with good rewards and lounge access, but lowe",
+        "gold": [
+          "card_3",
+          "card_6"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q9",
+        "query": "I drive to work and need gas rewards",
+        "gold": [
+          "card_10"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 4
+        }
+      },
+      {
+        "id": "q10",
+        "query": "Best card for dining and restaurants",
+        "gold": [
+          "card_6"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 5
+        }
+      },
+      {
+        "id": "q11",
+        "query": "I need to build my credit score",
+        "gold": [
+          "card_4",
+          "card_9"
+        ],
+        "vanilla": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q12",
+        "query": "Shopping on Amazon and Whole Foods",
+        "gold": [
+          "card_11",
+          "card_13"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q13",
+        "query": "Crypto rewards and bitcoin back",
+        "gold": [
+          "card_14"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": false,
+          "top_5": true,
+          "position": 2
+        }
+      },
+      {
+        "id": "q14",
+        "query": "International travel with no foreign transaction f",
+        "gold": [
+          "card_15"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      },
+      {
+        "id": "q15",
+        "query": "Premium card with the best travel benefits",
+        "gold": [
+          "card_8",
+          "card_1",
+          "card_3"
+        ],
+        "vanilla": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "rerank_only": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        },
+        "policy_guided": {
+          "top_1": true,
+          "top_5": true,
+          "position": 1
+        }
+      }
+    ]
+  }
+}

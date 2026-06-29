@@ -1,0 +1,1507 @@
+{
+  "timestamp": "2026-06-29T02:05:28.896255",
+  "experiment": "synthetic_test",
+  "config": {
+    "pipeline": {
+      "k_context": 10,
+      "k_guidance": 3,
+      "top_n": 5,
+      "max_guidance_in_query": 3,
+      "policy_mode": "operator",
+      "policy_weight": 5.0
+    },
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dimension": 384
+    },
+    "reranker": {
+      "default": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    },
+    "vector_store": {
+      "collection_name": "policy_guided_rag",
+      "persist_directory": null
+    },
+    "seed": 42
+  },
+  "results": {
+    "dataset": "synthetic",
+    "accuracy_subset_n": 138,
+    "accuracy": {
+      "vanilla": {
+        "top_1_accuracy": 0.2826086956521739,
+        "top_5_accuracy": 0.6521739130434783,
+        "avg_position": 35.971014492753625,
+        "n": 138
+      },
+      "rerank_only": {
+        "top_1_accuracy": 0.2536231884057971,
+        "top_5_accuracy": 0.6594202898550725,
+        "avg_position": 35.26086956521739,
+        "n": 138
+      },
+      "filter": {
+        "top_1_accuracy": 0.2028985507246377,
+        "top_5_accuracy": 0.5942028985507246,
+        "avg_position": 41.6231884057971,
+        "n": 138
+      },
+      "pg_augment": {
+        "top_1_accuracy": 0.21739130434782608,
+        "top_5_accuracy": 0.6666666666666666,
+        "avg_position": 34.69565217391305,
+        "n": 138
+      },
+      "pg_operator": {
+        "top_1_accuracy": 0.2246376811594203,
+        "top_5_accuracy": 0.572463768115942,
+        "avg_position": 43.572463768115945,
+        "n": 138
+      }
+    },
+    "significance": {
+      "rerank_only_vs_vanilla": {
+        "comparison": "rerank_only vs vanilla",
+        "n": 138,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 13,
+          "b10_only_A_correct": 17,
+          "discordant": 30,
+          "p_value": 0.5846647117286922,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 16,
+          "b10_only_A_correct": 15,
+          "discordant": 31,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 1404.5,
+          "p_value": 0.9134433329982857,
+          "non_tied_pairs": 75,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 0.7101449275362319,
+          "ci_low": -6.898550724637682,
+          "ci_high": 8.326086956521738,
+          "n": 138
+        }
+      },
+      "pg_augment_vs_rerank_only": {
+        "comparison": "pg_augment vs rerank_only",
+        "n": 138,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 10,
+          "b10_only_A_correct": 15,
+          "discordant": 25,
+          "p_value": 0.42435622215270996,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 8,
+          "b10_only_A_correct": 7,
+          "discordant": 15,
+          "p_value": 1.0,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 865.5,
+          "p_value": 0.7134709902518195,
+          "non_tied_pairs": 60,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": 0.5652173913043478,
+          "ci_low": -4.8768115942028984,
+          "ci_high": 5.884057971014493,
+          "n": 138
+        }
+      },
+      "pg_operator_vs_rerank_only": {
+        "comparison": "pg_operator vs rerank_only",
+        "n": 138,
+        "top_1_mcnemar": {
+          "b01_only_B_correct": 15,
+          "b10_only_A_correct": 19,
+          "discordant": 34,
+          "p_value": 0.6075913612730801,
+          "significant_at_0.05": false
+        },
+        "top_5_mcnemar": {
+          "b01_only_B_correct": 21,
+          "b10_only_A_correct": 33,
+          "discordant": 54,
+          "p_value": 0.13367423536410522,
+          "significant_at_0.05": false
+        },
+        "position_wilcoxon": {
+          "statistic": 1641.5,
+          "p_value": 0.1387315301120461,
+          "non_tied_pairs": 89,
+          "significant_at_0.05": false
+        },
+        "mean_position_improvement_ci": {
+          "mean": -8.31159420289855,
+          "ci_low": -18.27536231884058,
+          "ci_high": 1.536231884057971,
+          "n": 138
+        }
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "n": 45,
+        "rerank_only": {
+          "top_1_accuracy": 0.26666666666666666,
+          "top_5_accuracy": 0.7333333333333333,
+          "avg_position": 28.066666666666666,
+          "n": 45
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.26666666666666666,
+          "top_5_accuracy": 0.5777777777777777,
+          "avg_position": 42.82222222222222,
+          "n": 45
+        }
+      },
+      "medium": {
+        "n": 53,
+        "rerank_only": {
+          "top_1_accuracy": 0.24528301886792453,
+          "top_5_accuracy": 0.660377358490566,
+          "avg_position": 35.22641509433962,
+          "n": 53
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.2641509433962264,
+          "top_5_accuracy": 0.6792452830188679,
+          "avg_position": 33.283018867924525,
+          "n": 53
+        }
+      },
+      "hard": {
+        "n": 37,
+        "rerank_only": {
+          "top_1_accuracy": 0.24324324324324326,
+          "top_5_accuracy": 0.5675675675675675,
+          "avg_position": 44.13513513513514,
+          "n": 37
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.13513513513513514,
+          "top_5_accuracy": 0.3783783783783784,
+          "avg_position": 62.567567567567565,
+          "n": 37
+        }
+      },
+      "expert": {
+        "n": 3,
+        "rerank_only": {
+          "top_1_accuracy": 0.3333333333333333,
+          "top_5_accuracy": 0.6666666666666666,
+          "avg_position": 34.333333333333336,
+          "n": 3
+        },
+        "pg_operator": {
+          "top_1_accuracy": 0.0,
+          "top_5_accuracy": 1.0,
+          "avg_position": 2.3333333333333335,
+          "n": 3
+        }
+      }
+    },
+    "controllability": {
+      "n": 101,
+      "mean_rank": {
+        "vanilla": 75.84356435643564,
+        "rerank_only": 70.31237623762377,
+        "filter": 73.41683168316833,
+        "pg_augment": 70.44009900990099,
+        "pg_operator": 44.96138613861387
+      },
+      "topn_hit_rate": {
+        "vanilla": 0.6138613861386139,
+        "rerank_only": 0.693069306930693,
+        "filter": 0.6336633663366337,
+        "pg_augment": 0.7524752475247525,
+        "pg_operator": 0.8118811881188119
+      },
+      "steering_lift_vs_rerank_only": {
+        "filter": {
+          "mean": -3.1044554455445548,
+          "ci_low": -4.547029702970297,
+          "ci_high": -1.7618811881188117,
+          "n": 101
+        },
+        "pg_augment": {
+          "mean": -0.12772277227722736,
+          "ci_low": -2.502475247524752,
+          "ci_high": 2.1485148514851495,
+          "n": 101
+        },
+        "pg_operator": {
+          "mean": 25.3509900990099,
+          "ci_low": 19.485643564356437,
+          "ci_high": 31.49009900990099,
+          "n": 101
+        }
+      }
+    },
+    "enforcement": {
+      "n": 29,
+      "excluded_in_topn_rate": {
+        "vanilla": 0.3793103448275862,
+        "rerank_only": 0.5172413793103449,
+        "filter": 0.034482758620689655,
+        "pg_augment": 0.5172413793103449,
+        "pg_operator": 0.06896551724137931
+      }
+    },
+    "detailed": [
+      {
+        "id": "q001",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q002",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q003",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 99,
+        "filter": 5,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q004",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q005",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q006",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q007",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 1,
+        "pg_operator": 4
+      },
+      {
+        "id": "q008",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 5,
+        "pg_operator": 3
+      },
+      {
+        "id": "q009",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q010",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 3,
+        "pg_operator": 3
+      },
+      {
+        "id": "q011",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "filter": 5,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q012",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q013",
+        "difficulty": "easy",
+        "vanilla": 3,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q015",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q016",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q017",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q018",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q019",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q020",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q021",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q022",
+        "difficulty": "hard",
+        "vanilla": 4,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 2,
+        "pg_operator": 5
+      },
+      {
+        "id": "q023",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q024",
+        "difficulty": "hard",
+        "vanilla": 4,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q025",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q027",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q028",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q029",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q030",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 4,
+        "filter": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q031",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 5,
+        "pg_operator": 99
+      },
+      {
+        "id": "q032",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q033",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q036",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q037",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q038",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q039",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q040",
+        "difficulty": "medium",
+        "vanilla": 3,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q041",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q042",
+        "difficulty": "hard",
+        "vanilla": 4,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q043",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q044",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q045",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q046",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q047",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q049",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q050",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q051",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q052",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q053",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q054",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 4,
+        "pg_operator": 2
+      },
+      {
+        "id": "q055",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q056",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 3,
+        "pg_operator": 2
+      },
+      {
+        "id": "q057",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 5
+      },
+      {
+        "id": "q058",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q059",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q060",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "filter": 4,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q061",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q062",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 3,
+        "pg_operator": 4
+      },
+      {
+        "id": "q063",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q065",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q067",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q068",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q070",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q071",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q072",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q073",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q074",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q075",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q076",
+        "difficulty": "expert",
+        "vanilla": 2,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q077",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q078",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q079",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q080",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q081",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q082",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q083",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 3,
+        "pg_operator": 99
+      },
+      {
+        "id": "q084",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q085",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 3
+      },
+      {
+        "id": "q086",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 2,
+        "pg_operator": 4
+      },
+      {
+        "id": "q087",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q088",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q089",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q090",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q092",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q093",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q094",
+        "difficulty": "medium",
+        "vanilla": 4,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 5,
+        "pg_operator": 99
+      },
+      {
+        "id": "q095",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q096",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q097",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q098",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 99,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q100",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 4,
+        "pg_operator": 2
+      },
+      {
+        "id": "q101",
+        "difficulty": "hard",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q102",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q103",
+        "difficulty": "medium",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q104",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 2,
+        "pg_operator": 1
+      },
+      {
+        "id": "q105",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q106",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 5,
+        "pg_operator": 99
+      },
+      {
+        "id": "q107",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q108",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q109",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q110",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q111",
+        "difficulty": "expert",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 2,
+        "pg_operator": 2
+      },
+      {
+        "id": "q112",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 2,
+        "filter": 99,
+        "pg_augment": 4,
+        "pg_operator": 2
+      },
+      {
+        "id": "q113",
+        "difficulty": "easy",
+        "vanilla": 3,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q114",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q115",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q116",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 5,
+        "pg_operator": 1
+      },
+      {
+        "id": "q117",
+        "difficulty": "hard",
+        "vanilla": 5,
+        "rerank_only": 5,
+        "filter": 5,
+        "pg_augment": 5,
+        "pg_operator": 5
+      },
+      {
+        "id": "q118",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q119",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 4,
+        "pg_operator": 99
+      },
+      {
+        "id": "q120",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q122",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 1,
+        "pg_operator": 2
+      },
+      {
+        "id": "q123",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q124",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 2,
+        "pg_operator": 3
+      },
+      {
+        "id": "q125",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q126",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q127",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q128",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q129",
+        "difficulty": "medium",
+        "vanilla": 5,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 5,
+        "pg_operator": 3
+      },
+      {
+        "id": "q130",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 3,
+        "filter": 3,
+        "pg_augment": 3,
+        "pg_operator": 1
+      },
+      {
+        "id": "q131",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 2,
+        "pg_operator": 4
+      },
+      {
+        "id": "q132",
+        "difficulty": "hard",
+        "vanilla": 1,
+        "rerank_only": 5,
+        "filter": 99,
+        "pg_augment": 4,
+        "pg_operator": 99
+      },
+      {
+        "id": "q133",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q135",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q136",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 4,
+        "pg_operator": 3
+      },
+      {
+        "id": "q137",
+        "difficulty": "medium",
+        "vanilla": 1,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q138",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 2
+      },
+      {
+        "id": "q139",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q140",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 4,
+        "pg_operator": 1
+      },
+      {
+        "id": "q141",
+        "difficulty": "hard",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 99
+      },
+      {
+        "id": "q142",
+        "difficulty": "easy",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 4,
+        "pg_operator": 99
+      },
+      {
+        "id": "q143",
+        "difficulty": "expert",
+        "vanilla": 5,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 3
+      },
+      {
+        "id": "q144",
+        "difficulty": "easy",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 2,
+        "pg_operator": 1
+      },
+      {
+        "id": "q145",
+        "difficulty": "easy",
+        "vanilla": 1,
+        "rerank_only": 1,
+        "filter": 1,
+        "pg_augment": 1,
+        "pg_operator": 99
+      },
+      {
+        "id": "q146",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 4,
+        "filter": 4,
+        "pg_augment": 1,
+        "pg_operator": 1
+      },
+      {
+        "id": "q147",
+        "difficulty": "medium",
+        "vanilla": 99,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 99,
+        "pg_operator": 4
+      },
+      {
+        "id": "q148",
+        "difficulty": "medium",
+        "vanilla": 2,
+        "rerank_only": 1,
+        "filter": 99,
+        "pg_augment": 2,
+        "pg_operator": 4
+      },
+      {
+        "id": "q149",
+        "difficulty": "easy",
+        "vanilla": 4,
+        "rerank_only": 2,
+        "filter": 2,
+        "pg_augment": 2,
+        "pg_operator": 99
+      },
+      {
+        "id": "q150",
+        "difficulty": "easy",
+        "vanilla": 5,
+        "rerank_only": 99,
+        "filter": 99,
+        "pg_augment": 5,
+        "pg_operator": 99
+      }
+    ]
+  }
+}

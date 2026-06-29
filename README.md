@@ -53,28 +53,31 @@ Four guidance mechanisms are selectable via `pipeline.policy_mode`:
 
 ## Key results
 
-**Controllability — the operator works (synthetic, non-circular labels).**
+**Controllability — only the operator steers (synthetic, non-circular labels).**
 
-| Metric | Vanilla | Rerank-only | Augment | **Operator** |
-|---|---|---|---|---|
-| BOOST: policy-preferred mean rank ↓ (n=101) | 75.8 | 70.3 | 70.4 | **42.7** |
-| BOOST: policy-preferred top-n hit ↑ | 61.4% | 69.3% | 75.2% | **80.2%** |
-| BOOST: steering lift vs rerank-only (95% CI) | — | — | −0.1 [−2.5, +2.2] | **+27.6 [+21.2, +34.1]** |
-| EXCLUDE: excluded card appears in top-n ↓ (n=29) | 37.9% | 51.7% | 51.7% | **6.9%** |
+| Metric | Vanilla | Rerank-only | Filter | Augment | **Operator** |
+|---|---|---|---|---|---|
+| BOOST: policy-preferred mean rank ↓ (n=101) | 75.8 | 70.3 | 73.4 | 70.4 | **45.0** |
+| BOOST: policy-preferred top-n hit ↑ | 61.4% | 69.3% | 63.4% | 75.2% | **81.2%** |
+| BOOST: steering lift vs rerank-only (95% CI) | — | — | −3.1 [−4.6, −1.8] | −0.1 [−2.5, +2.2] | **+25.4 [+19.5, +31.5]** |
+| EXCLUDE: excluded card in top-n ↓ (n=29) | 37.9% | 51.7% | 3.4% | 51.7% | 6.9% |
 
-The operator's BOOST lift is large and its CI excludes zero; augment's does not. EXCLUDE is
-hard removal — the residual 6.9% is guidance-*retrieval* misses, and goes to **0%** at
-`k_guidance=8` (at a measurable relevance cost — the control↔relevance trade-off).
+Only the operator produces a positive BOOST lift (CI excludes 0). A plain metadata **filter**
+enforces exclusions just as well (3.4% vs 6.9%) but **cannot promote** — it has no positive
+lift. This answers "why not just filter?": filtering handles exclusions; only the operator can
+surface a policy-preferred item that pure relevance buried.
 
-**Relevance is preserved (synthetic, n=138 labelled queries).**
+**That control has a relevance cost (synthetic, n=138 labelled queries).**
 
-| Metric | Vanilla | Rerank-only | Augment | Operator |
-|---|---|---|---|---|
-| Top-5 accuracy | 65.2% | 65.9% | 66.7% | 68.1% |
-| Mean target position | 36.0 | 35.3 | 34.7 | 33.0 |
+| Metric | Vanilla | Rerank-only | Filter | Augment | Operator |
+|---|---|---|---|---|---|
+| Top-5 accuracy | 65.2% | 65.9% | 59.4% | 66.7% | 57.2% |
+| Mean target position | 36.0 | 35.3 | 41.6 | 34.7 | 43.6 |
 
-Operator vs rerank-only is not significantly different on accuracy (McNemar p=0.79) — control
-comes at **no relevance cost** at the default operating point.
+Enforcing policy displaces some genuinely relevant items: the operator's Top-5 is ~9 pts below
+rerank-only (McNemar p=0.13 — not significant at this n, but a real trade-off). Pushing EXCLUDE
+enforcement to 0% (`k_guidance=8`) lowers Top-5 further to 46.4%. **Control is a tunable dial,
+not a free lunch** — the honest headline.
 
 **Negative result — augment does not help (and can hurt).**
 
@@ -98,18 +101,24 @@ The schedule compiles to **attribute-predicate** policies (`data/governance/poli
 hard `EXCLUDE` of restricted / PII / deprecated / legal-hold documents; soft `BOOST` of the
 current authoritative version; `DEMOTE` of wrong-jurisdiction editions.
 
-| Metric (21 queries) | Vanilla | Rerank-only | **Operator** |
-|---|---|---|---|
-| Relevance — sub-topic top-5 (governance-independent gold) | 95.2% | 100% | 100% (no harm) |
-| Relevance — mean position | 6.0 | 1.2 | 1.1 |
-| **Compliance violation** (restricted/PII/deprecated/hold in top-n) | 100% | 100% | **0.0%** |
-| Authorized-version hit | 95.2% | 100% | 100% |
-| Latency (retrieve+rerank+operator) | — | — | ~0.4 s, **0 LLM calls** |
+| Metric (21 queries) | Vanilla | Rerank-only | Filter | **Operator** |
+|---|---|---|---|---|
+| Relevance — sub-topic top-5 (governance-independent gold) | 95.2% | 100% | 100% | 100% |
+| Relevance — mean position | 6.0 | 1.2 | 1.1 | 1.1 |
+| **Compliance violation** (restricted/PII/deprecated/hold in top-n) | 100% | 100% | **0.0%** | **0.0%** |
+| Authorized-version in top-1 | 38.1% | 33.3% | 81.0% | 81.0% |
+| Latency (retrieve+rerank+operator) | — | — | — | ~0.24 s, **0 LLM calls** |
 
 The ungoverned KB surfaces a must-exclude document on **every** query (they're topically
 relevant); the operator removes them **exactly and retrieval-independently** while preserving
 topical relevance. Hard constraints are evaluated unconditionally (not gated by guidance
 retrieval), so enforcement is a guarantee, not best-effort.
+
+Note the honest nuance: here **filter ≡ operator**, because in governance the policy *aligns*
+with relevance (the right answer is the current authoritative doc, which relevance already
+surfaces). The operator's promotion advantage shows up only where policy must *diverge* from
+relevance (the synthetic business-preference case above). Together these delimit exactly when
+the operator is needed over a filter.
 
 **Catalog-drift robustness** (`python scripts/governance_drift_demo.py`): a *new* restricted
 document authored after the policy is **leaked by a frozen ID-list** (compliance failure) but

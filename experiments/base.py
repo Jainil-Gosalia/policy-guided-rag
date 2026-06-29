@@ -17,7 +17,7 @@ from src.data.preprocessors import ChunkPreparer
 from src.models.vector_store import PolicyGuidedVectorStore
 from src.models.reranker import CrossEncoderReranker
 from src.models.pipeline import PolicyGuidedPipeline
-from src.models.baselines import VanillaRAG, RerankOnlyRAG
+from src.models.baselines import VanillaRAG, RerankOnlyRAG, MetadataFilterRAG
 from src.evaluation.metrics import get_retrieval_metrics, compute_detailed_metrics
 
 
@@ -128,6 +128,13 @@ class BaseExperiment:
         """
         reranker = reranker or self.create_reranker()
         return RerankOnlyRAG(vector_store, reranker, config=self.config)
+
+    def create_filter(self,
+                      vector_store: PolicyGuidedVectorStore,
+                      reranker: Optional[CrossEncoderReranker] = None) -> MetadataFilterRAG:
+        """Create the rule-based metadata-filter baseline (rerank + hard EXCLUDE only)."""
+        reranker = reranker or self.create_reranker()
+        return MetadataFilterRAG(vector_store, reranker, config=self.config)
 
     def run_query(self,
                   query: str,

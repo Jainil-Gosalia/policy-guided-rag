@@ -22,11 +22,14 @@ effect are isolated:
 |---|---|---|
 | `vanilla` | ✗ (embedding similarity only) | none |
 | `rerank_only` | ✓ (raw query) | none |
+| `filter` | ✓ (raw query) | hard EXCLUDE only (the "just filter" baseline) |
 | `pg_augment` | ✓ (guidance text appended to query) | query augmentation |
 | `pg_operator` | ✓ (raw query) | explicit BOOST/DEMOTE/EXCLUDE on scores |
 
 `vanilla → rerank_only` measures the reranker. `rerank_only → pg_*` isolates **guidance**.
-The mechanism is selected by `pipeline.policy_mode ∈ {none, augment, operator, both}`.
+`filter → pg_operator` isolates **promotion** (a filter removes; only the operator promotes).
+The mechanism is selected by `pipeline.policy_mode ∈ {none, augment, operator, both}`; the
+filter is the operator with zero weight and injection disabled.
 
 ## Experiments
 
@@ -88,8 +91,10 @@ self-fulfilling:
 
 | `k_guidance` | EXCLUDE appears-in-top-n | Top-5 accuracy (operator) | BOOST steering lift |
 |---|---|---|---|
-| 3 (default) | 6.9% | 68.1% (no loss vs rerank-only) | +27.6 [+21.2, +34.1] |
-| 8 | **0.0%** (full enforcement) | 55.1% (significant drop, p=0.02) | +24.9 [+20.0, +30.1] |
+| 3 (default) | 6.9% | 57.2% | +25.4 [+19.5, +31.5] |
+| 8 | **0.0%** (full enforcement) | 46.4% | +23.0 [+18.2, +28.0] |
+
+(rerank-only Top-5 baseline = 65.9%; results are deterministic — single-threaded HNSW, seed 42.)
 
 Stronger enforcement is available, but removing/demoting more cards removes some that are
 genuinely relevant. This trade-off is the honest headline of the operator, not a free lunch.
@@ -108,10 +113,11 @@ policies (`policies.json`) consumed by `PolicyOperator.apply_policy_set`:
   covers all matching docs and survives corpus changes.
 
 Metrics: sub-topic **relevance** (governance-independent gold), **compliance violation**
-rate (must-exclude doc in top-n; operator target 0%), **authorized-version hit**,
-**promotion** (authorized doc surfaced by the operator but missed by rerank-only — a filter
-cannot promote), and per-query **latency**. Headline: compliance violation 100% → **0.0%**
-with no relevance loss, ~0.4 s/query, zero LLM calls.
+rate (must-exclude doc in top-n; target 0%), **authorized-version** hit/top-1, and per-query
+**latency**. Headline: compliance violation 100% → **0.0%** with no relevance loss, ~0.24 s/query,
+zero LLM calls. Here filter ≡ operator (policy aligns with relevance, so a filter suffices); the
+operator's promotion advantage over the filter is demonstrated on the synthetic set, where
+policy-preferred items are *not* the most relevant.
 
 `scripts/governance_drift_demo.py` shows a new restricted document (authored after the policy)
 leaking through a frozen ID-list while the attribute predicate still excludes it.

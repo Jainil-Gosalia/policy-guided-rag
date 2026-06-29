@@ -15,6 +15,7 @@ comparison that supports the paper's central claim.
 from typing import List, Dict, Optional
 from .vector_store import PolicyGuidedVectorStore
 from .reranker import CrossEncoderReranker
+from .policy_operator import PolicyOperator
 
 from ..config.config import Config
 
@@ -102,3 +103,46 @@ class RerankOnlyRAG:
         reranked = self.reranker.rerank(query, context_chunks, top_k=self.top_n)
 
         return {'final_chunks': reranked}
+
+
+class MetadataFilterRAG:
+    """
+    The "just filter the candidate set" baseline.
+
+    Reranks against the raw query, then applies ONLY the hard EXCLUDE part of the policy
+    (structural removal) — no BOOST, no DEMOTE, no candidate injection. This is the obvious
+    competitor to the policy operator: it enforces exclusions just as exactly, but a filter
+    can only *remove* items, never *promote* a policy-preferred item that pure relevance
+    missed. The contrast (filter == operator on EXCLUDE; operator > filter on steering /
+    promotion) is what justifies the operator over plain metadata filtering.
+
+    Implemented as the operator with zero weight and injection disabled, so BOOST/DEMOTE are
+    no-ops and only EXCLUDE removes.
+    """
+
+    def __init__(self,
+                 vector_store: PolicyGuidedVectorStore,
+                 reranker: CrossEncoderReranker,
+                 k_context: Optional[int] = None,
+                 k_guidance: Optional[int] = None,
+                 top_n: Optional[int] = None,
+                 config: Optional[Config] = None):
+        self.vector_store = vector_store
+        self.reranker = reranker
+        if config:
+            self.k_context = k_context or config.pipeline.k_context
+            self.k_guidance = k_guidance or config.pipeline.k_guidance
+            self.top_n = top_n or config.pipeline.top_n
+        else:
+            self.k_context = k_context or 10
+            self.k_guidance = k_guidance or 3
+            self.top_n = top_n or 5
+        self._filter = PolicyOperator(weight=0.0, inject_boosted=False)
+
+    def retrieve(self, query: str) -> Dict:
+        """Rerank, then hard-EXCLUDE filter (chunk-path guidance). No promotion."""
+        context_chunks = self.vector_store.retrieve_context(query, top_k=self.k_context)
+        guidance_chunks = self.vector_store.retrieve_guidance(query, top_k=self.k_guidance)
+        reranked = self.reranker.rerank(query, context_chunks, top_k=len(context_chunks))
+        filtered = self._filter.apply(reranked, guidance_chunks)  # weight 0 => only EXCLUDE
+        return {'final_chunks': filtered[:self.top_n]}

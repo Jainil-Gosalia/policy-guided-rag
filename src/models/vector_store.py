@@ -47,11 +47,14 @@ class PolicyGuidedVectorStore:
             model_name=embedding_model
         )
 
-        # Get or create collection
+        # Get or create collection. Build the HNSW index single-threaded so retrieval is
+        # deterministic run-to-run (parallel construction reorders ties; the index is
+        # ephemeral and rebuilt each run).
         self.collection = self.client.get_or_create_collection(
             name=collection_name,
             embedding_function=self.embedding_function,
-            metadata={"description": "Policy-guided RAG with context and guidance chunks"}
+            metadata={"description": "Policy-guided RAG with context and guidance chunks",
+                      "hnsw:num_threads": 1}
         )
 
         print(f"+ Initialized vector store with {self.collection.count()} chunks")

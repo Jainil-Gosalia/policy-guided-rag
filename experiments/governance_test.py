@@ -81,13 +81,17 @@ class GovernanceTestExperiment(BaseExperiment):
         vanilla = VanillaRAG(vs, config=self.config)
         rerank_only = RerankOnlyRAG(vs, reranker, config=self.config)
         operator = PolicyOperator(weight=self.config.pipeline.policy_weight)
+        # The "just filter" baseline: hard EXCLUDE only, no BOOST/DEMOTE, no promotion.
+        hard_policies = [p for p in policies if p.get("tier") == "hard"]
+        filter_op = PolicyOperator(weight=0.0, inject_boosted=False)
         top_n = self.config.pipeline.top_n
 
-        conds = ["vanilla", "rerank_only", "operator"]
+        conds = ["vanilla", "rerank_only", "filter", "operator"]
         acc = {c: [] for c in conds}
         compliance = {c: [] for c in conds}     # 1 if a must-exclude doc leaks into top-n
         authorized = {c: [] for c in conds}     # 1 if authorized doc in top-n
-        promo_ro, promo_op = [], []
+        authorized_top1 = {c: [] for c in conds}  # 1 if authorized doc is rank 1
+        promo_filter, promo_op = [], []         # authorized in top-n (filter vs operator)
         latencies = []
 
         for q in queries:
@@ -98,9 +102,13 @@ class GovernanceTestExperiment(BaseExperiment):
             finals["vanilla"] = vanilla.retrieve(q["query"])["final_chunks"][:top_n]
             finals["rerank_only"] = rerank_only.retrieve(q["query"])["final_chunks"][:top_n]
 
-            t0 = time.perf_counter()
             pool = vs.retrieve_context(q["query"], top_k=self.config.pipeline.k_context)
             reranked = reranker.rerank(q["query"], pool, top_k=len(pool))
+            # filter baseline: hard EXCLUDE only (no promotion)
+            finals["filter"] = filter_op.apply_policy_set(reranked, hard_policies, items, q["query"],
+                                                          reranker=reranker, vector_store=vs)[:top_n]
+            # full operator (timed)
+            t0 = time.perf_counter()
             opped = operator.apply_policy_set(reranked, policies, items, q["query"],
                                               reranker=reranker, vector_store=vs)
             finals["operator"] = opped[:top_n]
@@ -111,13 +119,13 @@ class GovernanceTestExperiment(BaseExperiment):
                 acc[c].append(_metrics(finals[c], gold))
                 compliance[c].append(int(any(MUST_EXCLUDE(items[i]) for i in ids if i in items)))
                 authorized[c].append(int(auth in ids))
+                authorized_top1[c].append(int(bool(ids) and ids[0] == auth))
 
-            ro_ids = [x["metadata"]["card_id"] for x in finals["rerank_only"]]
-            op_ids = [x["metadata"]["card_id"] for x in finals["operator"]]
-            promo_ro.append(int(auth in ro_ids))
-            promo_op.append(int(auth in op_ids))
+            promo_filter.append(int(auth in [x["metadata"]["card_id"] for x in finals["filter"]]))
+            promo_op.append(int(auth in [x["metadata"]["card_id"] for x in finals["operator"]]))
 
-        results = self._summarize(conds, acc, compliance, authorized, promo_ro, promo_op, latencies, queries)
+        results = self._summarize(conds, acc, compliance, authorized, authorized_top1,
+                                  promo_filter, promo_op, latencies, queries)
         self._print(results)
         self.save_results(results)
         print("=" * 70)
@@ -129,9 +137,10 @@ class GovernanceTestExperiment(BaseExperiment):
                 "top_5": sum(m["top_5"] for m in ms) / n,
                 "avg_pos": sum(m["position"] for m in ms) / n, "n": n}
 
-    def _summarize(self, conds, acc, compliance, authorized, promo_ro, promo_op, lat, queries):
+    def _summarize(self, conds, acc, compliance, authorized, authorized_top1,
+                   promo_filter, promo_op, lat, queries):
         n = len(queries)
-        promotions = sum(1 for r, o in zip(promo_ro, promo_op) if o and not r)
+        promotions = sum(1 for f, o in zip(promo_filter, promo_op) if o and not f)
         lat_sorted = sorted(lat)
         return {
             "dataset": "governance",
@@ -139,13 +148,14 @@ class GovernanceTestExperiment(BaseExperiment):
             "accuracy": {c: self._agg(acc[c]) for c in conds},
             "compliance_violation_rate": {c: sum(compliance[c]) / n for c in conds},
             "authorized_hit_rate": {c: sum(authorized[c]) / n for c in conds},
-            "promotion": {"rerank_only_auth_hits": sum(promo_ro),
-                          "operator_auth_hits": sum(promo_op),
-                          "promotions_operator_only": promotions},
-            "authorized_significance": paired_comparison(
-                [{"top_1": h, "top_5": h, "position": 1 if h else 99} for h in promo_ro],
-                [{"top_1": h, "top_5": h, "position": 1 if h else 99} for h in promo_op],
-                "rerank_only", "operator"),
+            "authorized_top1_rate": {c: sum(authorized_top1[c]) / n for c in conds},
+            "promotion_vs_filter": {"filter_auth_hits": sum(promo_filter),
+                                    "operator_auth_hits": sum(promo_op),
+                                    "promotions_operator_only": promotions},
+            "authorized_top1_significance": paired_comparison(
+                [{"top_1": h, "top_5": h, "position": 1 if h else 99} for h in authorized_top1["filter"]],
+                [{"top_1": h, "top_5": h, "position": 1 if h else 99} for h in authorized_top1["operator"]],
+                "filter", "operator"),
             "latency_ms": {"mean": sum(lat) / n, "p50": lat_sorted[n // 2],
                            "p95": lat_sorted[min(n - 1, int(0.95 * n))], "max": max(lat)},
         }
@@ -166,15 +176,17 @@ class GovernanceTestExperiment(BaseExperiment):
         print("  (operator target: 0.0% — hard predicate exclusion, retrieval-independent)")
 
         print("\n" + "=" * 70)
-        print("AUTHORIZED-VERSION HIT  (current/region-correct doc in top-n)")
+        print("AUTHORIZED-VERSION HIT  (current/region-correct doc; filter vs operator)")
         print("=" * 70)
-        for c, v in r["authorized_hit_rate"].items():
-            print(f"  {c:<14}{v*100:>6.1f}%")
-        p = r["promotion"]
-        sig = r["authorized_significance"]["top_5_mcnemar"]
-        print(f"\n  Promotion (a filter can't do this): operator surfaces the authorized doc in "
-              f"{p['promotions_operator_only']} queries where rerank-only did not "
-              f"(McNemar p={sig['p_value']:.4f}).")
+        print(f"{'Condition':<14}{'in top-n':>10}{'rank 1':>10}")
+        for c in r["authorized_hit_rate"]:
+            print(f"  {c:<12}{r['authorized_hit_rate'][c]*100:>9.1f}%{r['authorized_top1_rate'][c]*100:>9.1f}%")
+        p = r["promotion_vs_filter"]
+        sig = r["authorized_top1_significance"]["top_1_mcnemar"]
+        print(f"\n  A filter can only remove; the operator also PROMOTES. Operator ranks the")
+        print(f"  authorized doc #1 in {r['authorized_top1_rate']['operator']*100:.1f}% of queries vs "
+              f"{r['authorized_top1_rate']['filter']*100:.1f}% for the filter (McNemar p={sig['p_value']:.4f});")
+        print(f"  it surfaces the authorized doc in {p['promotions_operator_only']} top-n cases the filter misses.")
 
         lat = r["latency_ms"]
         print("\n" + "=" * 70)

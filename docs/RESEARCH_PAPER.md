@@ -21,26 +21,32 @@ beyond it. In all mechanisms guidance is **structurally absent** from the LLM co
 
 ## Headline results
 
-### Controllability — operator vs augment (synthetic, non-circular labels)
+### Controllability — only the operator steers (synthetic, non-circular labels)
 
-| Metric | Vanilla | Rerank-only | Augment | **Operator** |
-|---|---|---|---|---|
-| BOOST: policy-preferred mean rank ↓ (n=101) | 75.8 | 70.3 | 70.4 | **42.7** |
-| BOOST: policy-preferred top-n hit ↑ | 61.4% | 69.3% | 75.2% | **80.2%** |
-| BOOST: steering lift vs rerank-only (95% CI) | — | — | −0.1 [−2.5, +2.2] | **+27.6 [+21.2, +34.1]** |
-| EXCLUDE: excluded card in top-n ↓ (n=29) | 37.9% | 51.7% | 51.7% | **6.9%** |
+| Metric | Vanilla | Rerank-only | Filter | Augment | **Operator** |
+|---|---|---|---|---|---|
+| BOOST: policy-preferred mean rank ↓ (n=101) | 75.8 | 70.3 | 73.4 | 70.4 | **45.0** |
+| BOOST: policy-preferred top-n hit ↑ | 61.4% | 69.3% | 63.4% | 75.2% | **81.2%** |
+| BOOST: steering lift vs rerank-only (95% CI) | — | — | −3.1 [−4.6,−1.8] | −0.1 [−2.5,+2.2] | **+25.4 [+19.5,+31.5]** |
+| EXCLUDE: excluded card in top-n ↓ (n=29) | 37.9% | 51.7% | 3.4% | 51.7% | 6.9% |
 
-### Relevance is preserved (synthetic, n=138 labelled queries)
+A plain metadata **filter** enforces exclusions as well as the operator (3.4% vs 6.9%) but has
+**no positive steering lift** — it can remove, not promote. Only the operator steers. This is the
+contribution over standard filtering.
+
+### Control has a relevance cost (synthetic, n=138 labelled queries)
 
 | Condition | Top-1 | Top-5 | Mean position |
 |---|---|---|---|
 | Vanilla | 28.3% | 65.2% | 36.0 |
 | Rerank-only | 25.4% | 65.9% | 35.3 |
+| Filter | 20.3% | 59.4% | 41.6 |
 | Augment | 21.7% | 66.7% | 34.7 |
-| Operator | 25.4% | 68.1% | 33.0 |
+| Operator | 22.5% | 57.2% | 43.6 |
 
-Operator vs rerank-only: McNemar p=0.79 (top-5), Wilcoxon p=0.56 (position) — **no significant
-relevance change**. Control is essentially free at the default operating point.
+Operator vs rerank-only: top-5 65.9%→57.2% (McNemar p=0.13 — not significant at n=138, but a
+consistent trade-off). Enforcing policy displaces some relevant items; control is a tunable dial,
+not a free lunch.
 
 ### Negative result — augment (manual, 15 hand-verified queries)
 
@@ -56,8 +62,10 @@ Augment vs rerank-only: position Wilcoxon **p=0.039** — augment significantly 
 
 | `k_guidance` | EXCLUDE in top-n | Top-5 (operator) | BOOST steering lift |
 |---|---|---|---|
-| 3 (default) | 6.9% | 68.1% (no loss) | +27.6 [+21.2, +34.1] |
-| 8 | **0.0%** | 55.1% (p=0.02 drop) | +24.9 [+20.0, +30.1] |
+| 3 (default) | 6.9% | 57.2% | +25.4 [+19.5, +31.5] |
+| 8 | **0.0%** | 46.4% | +23.0 [+18.2, +28.0] |
+
+(rerank-only Top-5 baseline = 65.9%.)
 
 ### Leakage audit
 
@@ -75,15 +83,17 @@ sub-topics + 10 distractors) under a hidden **Data Governance & Records Schedule
 **attribute-predicate** policies (no document IDs). Hard `EXCLUDE` (restricted/PII/deprecated/
 legal-hold) is applied unconditionally; soft `BOOST`/`DEMOTE` adjust scores.
 
-| Metric (n=21) | Vanilla | Rerank-only | Operator |
-|---|---|---|---|
-| Relevance — sub-topic top-5 (gov-independent) | 95.2% | 100% | 100% |
-| Relevance — mean position | 6.0 | 1.2 | 1.1 |
-| **Compliance violation** (must-exclude in top-n) | 100% | 100% | **0.0%** |
-| Authorized-version hit | 95.2% | 100% | 100% |
+| Metric (n=21) | Vanilla | Rerank-only | Filter | Operator |
+|---|---|---|---|---|
+| Relevance — sub-topic top-5 (gov-independent) | 95.2% | 100% | 100% | 100% |
+| Relevance — mean position | 6.0 | 1.2 | 1.1 | 1.1 |
+| **Compliance violation** (must-exclude in top-n) | 100% | 100% | **0.0%** | **0.0%** |
+| Authorized-version in top-1 | 38.1% | 33.3% | 81.0% | 81.0% |
 
-The ungoverned KB surfaces a must-exclude document on every query; the operator removes them
-exactly and retrieval-independently with no relevance loss (~0.4 s/query, no LLM call).
+The ungoverned KB surfaces a must-exclude document on every query; both filter and operator
+remove them exactly and retrieval-independently with no relevance loss (~0.24 s/query, no LLM
+call). Here **filter ≡ operator** because policy aligns with relevance; the operator's promotion
+advantage appears only where policy diverges from relevance (the synthetic case above).
 **Catalog drift:** a new restricted document authored after the policy leaks through a frozen
 ID-list but is still excluded by the attribute predicate — the authoring-burden payoff of
 predicates over per-item rules.

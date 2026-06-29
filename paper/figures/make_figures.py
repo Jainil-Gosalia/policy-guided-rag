@@ -22,24 +22,24 @@ def fig_controllability():
     """Synthetic: BOOST steering lift (with 95% CI) and EXCLUDE enforcement by condition."""
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 3.6))
 
-    # Left: steering lift vs rerank-only with 95% CI
-    conds = ["augment", "operator"]
-    lift = [-0.13, 27.62]
-    ci_lo = [-2.50, 21.22]
-    ci_hi = [2.15, 34.08]
+    # Left: steering lift vs rerank-only with 95% CI (deterministic run)
+    conds = ["filter", "augment", "operator"]
+    lift = [-3.10, -0.13, 25.35]
+    ci_lo = [-4.55, -2.50, 19.49]
+    ci_hi = [-1.76, 2.15, 31.49]
     err = [[l - lo for l, lo in zip(lift, ci_lo)], [hi - l for hi, l in zip(ci_hi, lift)]]
-    colors = [GREY, ORANGE]
+    colors = [GREY, GREY, ORANGE]
     ax1.bar(conds, lift, color=colors, yerr=err, capsize=6, edgecolor="k", linewidth=0.5)
     ax1.axhline(0, color="k", linewidth=0.8)
     ax1.set_ylabel("BOOST steering lift (ranks ↑)")
     ax1.set_title("Controllability: steering lift vs. rerank-only")
     for i, v in enumerate(lift):
-        ax1.text(i, v + (1.5 if v >= 0 else -2.5), f"{v:+.1f}", ha="center", fontsize=9)
+        ax1.text(i, v + (1.5 if v >= 0 else -2.8), f"{v:+.1f}", ha="center", fontsize=9)
 
     # Right: EXCLUDE appearance rate by condition (lower is better)
-    ec = ["vanilla", "rerank-only", "augment", "operator"]
-    excl = [37.9, 51.7, 51.7, 6.9]
-    ax2.bar(ec, excl, color=[BLUE, GREY, GREY, ORANGE], edgecolor="k", linewidth=0.5)
+    ec = ["vanilla", "rerank-only", "filter", "augment", "operator"]
+    excl = [37.9, 51.7, 3.4, 51.7, 6.9]
+    ax2.bar(ec, excl, color=[BLUE, GREY, GREEN, GREY, ORANGE], edgecolor="k", linewidth=0.5)
     ax2.set_ylabel("Excluded card in top-n (%)")
     ax2.set_title("Enforcement: EXCLUDE (lower is better)")
     ax2.set_ylim(0, 60)
@@ -80,7 +80,7 @@ def fig_tradeoff():
     """Control–relevance trade-off: stronger enforcement (k_guidance) costs relevance."""
     ks = ["k=3 (default)", "k=8"]
     excl = [6.9, 0.0]      # EXCLUDE appearance (lower better)
-    top5 = [68.1, 55.1]    # operator Top-5 (higher better)
+    top5 = [57.2, 46.4]    # operator Top-5 (higher better)
     x = np.arange(len(ks))
     w = 0.36
     fig, ax = plt.subplots(figsize=(6.4, 3.7))

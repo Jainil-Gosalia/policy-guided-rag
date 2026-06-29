@@ -29,7 +29,7 @@ from src.evaluation.metrics import (
 from src.evaluation.stats import paired_comparison, bootstrap_ci_mean
 
 
-CONDITIONS = ["vanilla", "rerank_only", "pg_augment", "pg_operator"]
+CONDITIONS = ["vanilla", "rerank_only", "filter", "pg_augment", "pg_operator"]
 
 
 class SyntheticTestExperiment(BaseExperiment):
@@ -57,6 +57,7 @@ class SyntheticTestExperiment(BaseExperiment):
         systems = {
             "vanilla": self.create_baseline(vector_store),
             "rerank_only": self.create_rerank_only(vector_store, reranker),
+            "filter": self.create_filter(vector_store, reranker),
             "pg_augment": self.create_pipeline(vector_store, reranker, policy_mode="augment"),
             "pg_operator": self.create_pipeline(vector_store, reranker, policy_mode="operator"),
         }
@@ -150,6 +151,7 @@ class SyntheticTestExperiment(BaseExperiment):
             'topn_hit_rate': {c: (sum(steer_hit[c]) / len(steer_hit[c]) if steer_hit[c] else None)
                               for c in CONDITIONS},
             'steering_lift_vs_rerank_only': {
+                'filter': lift_ci('filter'),
                 'pg_augment': lift_ci('pg_augment'),
                 'pg_operator': lift_ci('pg_operator'),
             },
