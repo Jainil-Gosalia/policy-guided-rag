@@ -5,6 +5,8 @@
 \usepackage{tmlr}                 % default = submission (double-blind, anonymized)
 \usepackage{booktabs}
 \usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\newtheorem{proposition}{Proposition}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{enumitem}
@@ -27,8 +29,10 @@ Retrieval-Augmented Generation (RAG) systems cannot currently enforce hidden bus
 or safety constraints during retrieval without exposing those rules to the LLM. We introduce
 \textbf{Policy-Guided RAG}, a retrieval architecture built on an \emph{asymmetric visibility}
 pattern: hidden \guidance{} chunks influence ranking, but are physically filtered before LLM
-generation, so they are \emph{structurally absent} from the model's context rather than merely
-hidden. We study two mechanisms for letting guidance steer ranking. The intuitive
+generation. Our central contribution is a \emph{non-exposure guarantee} --- we prove that, for
+any query including adversarial ones, no guidance token can enter the model's context, so the
+policy cannot be extracted through the query channel (a property system-prompt rules provably
+lack). We then study two mechanisms for letting guidance steer ranking under this guarantee. The intuitive
 \emph{query-augmentation} mechanism --- appending guidance text to the query before
 cross-encoder reranking --- \emph{does not work}: on a benchmark whose relevance labels are
 constructed independently of the guidance, it yields no steering, and on a hand-verified set
@@ -175,6 +179,33 @@ satisfying all four desiderata.}
 \label{tab:compare}
 \end{table}
 
+\section{Related Work}
+\textbf{Controllable and rule-guided RAG.} A growing line of work makes RAG more controllable,
+but to improve \emph{answer quality}, with any guidance \emph{visible} to the model. Self-RAG
+\citep{asai2023selfrag} trains an LM to emit reflection tokens that decide when to retrieve and
+critique relevance/support; CRAG \citep{yan2024crag} adds a retrieval evaluator that triggers
+corrective actions when retrieved documents are poor. Both target factuality and robustness,
+not policy, and neither hides anything from the generator. Closest to us is RuleRAG
+\citep{chen2024rulerag}, which injects symbolic rules to steer retrieval and generation --- but
+the rules are placed \emph{in the LLM's context} (as in-context demonstrations or fine-tuning
+data) precisely so the model conditions on them. Query rewriting \citep{ma2023query} similarly
+transforms the visible query. Our setting is the dual: the policy must shape ranking while being
+\emph{structurally absent} from the model's context.
+
+\textbf{Guardrails and safety.} System-prompt rules and guardrail frameworks operate on the
+LLM's inputs/outputs and are therefore extractable or jailbreakable; \citet{robey2024rag} show
+retrieved content can itself subvert guardrails. Output post-filtering hides rules but is a
+rigid, binary gate applied after generation. By contrast, asymmetric visibility enforces policy
+\emph{during retrieval} and removes it before generation, so there is no rule in context to
+extract.
+
+\textbf{Reranking and metadata filtering.} Cross-encoder reranking \citep{nogueira2019passage,
+pradeep2021expando} and metadata filtering are standard retrieval tools. Metadata filtering can
+enforce hard exclusions but can only \emph{remove} candidates; we include it as the
+\emph{filter} baseline and show the gap it cannot close (promotion of policy-preferred items
+that pure relevance buries). To our knowledge, none of these formulate, or empirically verify,
+a non-exposure guarantee for the policy itself.
+
 \section{Method}
 
 \subsection{Problem Formulation}
@@ -229,6 +260,36 @@ Guidance chunks are physically removed before LLM generation by retaining only c
 \texttt{metadata['chunk\_type'] == 'context'}. This guarantees zero leakage even under
 adversarial jailbreak attempts or context-injection attacks --- the guidance is
 \emph{structurally absent}, not merely hidden.
+
+\subsection{The Non-Exposure Guarantee}
+\label{sec:nonexposure}
+We state the central property formally. Let $G$ be the guidance corpus, $C$ the context corpus,
+and let the pipeline emit a context set $X(q) \subseteq C$ for query $q$, where $X(q)$ is
+obtained by ranking and then retaining only chunks with $\texttt{chunk\_type}=\texttt{context}$.
+The LLM receives exactly $X(q)$.
+
+\textbf{Threat model.} An adversary controls the user query $q$ (arbitrary text, including
+prompt-injection and extraction attempts) but not the index, the metadata, or the filter. This
+is the realistic deployment setting: end users send queries; they do not edit the corpus.
+
+\begin{proposition}[Non-exposure]
+For every query $q$ --- adversarial or not --- and every $g \in G$, $g \notin X(q)$. Hence no
+guidance token can appear in the LLM's context, and the probability that an adversary extracts
+guidance content through the query channel is exactly $0$.
+\end{proposition}
+
+\begin{proof}
+$X(q)$ retains only chunks with $\texttt{chunk\_type}=\texttt{context}$, and every $g\in G$ has
+$\texttt{chunk\_type}=\texttt{guidance}$; thus $X(q)\cap G=\varnothing$ for all $q$. The query
+$q$ influences only the \emph{ranking} of $C$, never the type-based filter.
+\end{proof}
+
+The guarantee is unconditional and adversary-independent: it does not depend on model alignment,
+refusal behaviour, or prompt wording. This is precisely what a system-prompt policy cannot
+provide --- there the policy \emph{is} a token in the context and is therefore extractable
+(\S\ref{sec:results} measures this empirically). The operator and the augmenter are two
+\emph{instantiations} that influence ranking; the guarantee holds for any mechanism that acts
+before the type filter, which is the property we claim rather than the particular score update.
 
 \subsection{Why the Operator, Not Augmentation}
 A cross-encoder scores topical relevance, so the augmented-query mechanism can only push
@@ -511,10 +572,14 @@ remain confidential. Audit trails are strongly recommended.
 \subsection{Limitations and Threats to Validity}
 We state these plainly so the contribution is not over-read.
 \begin{itemize}[leftmargin=1.4em,itemsep=1pt]
-  \item \textbf{Controllability is partly by construction.} The operator directly manipulates
-  scores, so a positive \textsc{boost} lift and exact \textsc{exclude} are expected; the
-  informative quantities are the \emph{relevance cost} and the contrast with the filter baseline
-  (which isolates what re-scoring adds over removal), not the raw lift magnitude.
+  \item \textbf{Controllability is partly by construction --- and that is not the claim.} The
+  operator directly manipulates scores, so a positive \textsc{boost} lift and exact
+  \textsc{exclude} are expected. The paper's contribution is not the score update but
+  (i)~the non-exposure guarantee (Proposition~\ref{sec:nonexposure}), and (ii)~the
+  \emph{delimitation} of when re-scoring is even needed over a metadata filter --- it is not
+  when policy aligns with relevance (filter $\equiv$ operator, governance), only when policy must
+  diverge from it (promotion, synthetic). The informative empirical quantities are therefore the
+  filter contrast and the measured relevance cost, not the raw lift magnitude.
   \item \textbf{Scale and scope.} Two synthetic domains (cards, document governance); 15
   manual and 138 labelled synthetic queries; small enforcement/exclusion subgroups
   ($n{=}29$, $n{=}21$); a single embedding model and reranker; one dataset seed. Several
