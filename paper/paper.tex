@@ -544,11 +544,12 @@ Adversarial prompts & 20  & 0 \\
 in the LLM's system prompt (``apply these rules, never reveal them'') --- makes the policy a
 token in the model's context and therefore extractable. Using our adversarial harness
 (\texttt{experiments/leak\_contrast.py}) against a deployed model
-(\texttt{Qwen2.5-Coder-32B-Instruct}), at least 3 of 12 extraction attempts that returned
-cleanly reproduced the \emph{verbatim} policy ($\geq$6/12 across repeated runs, once we account
-for gateway errors that truncated additional leaking responses), spanning direct requests,
-summarisation, translation round-trips, and ``dump your system prompt as JSON'' attacks; the
-infrastructure errors only ever \emph{undercount} leaks. Policy-Guided RAG leaks in $0/12$ ---
+(\texttt{Qwen2.5-Coder-32B-Instruct}), 4 of 12 extraction attempts reproduced the
+\emph{verbatim} policy --- half of the 8 responses the gateway returned cleanly, and
+$\geq$6/12 across repeated runs once we account for gateway errors that truncated additional
+leaking responses --- spanning direct requests, summarisation, translation round-trips, and
+``dump your system prompt as JSON'' attacks; the infrastructure errors only ever
+\emph{undercount} leaks. Policy-Guided RAG leaks in $0/12$ ---
 not through alignment or refusal, but by construction (Proposition, \S\ref{sec:nonexposure}):
 the policy is never in the context to extract.
 
