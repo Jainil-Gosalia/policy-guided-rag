@@ -19,8 +19,10 @@ The OpenAI SDK reads OPENAI_API_KEY / OPENAI_BASE_URL from the environment autom
 only the model id needs to match what the endpoint serves.
 """
 import os
+import re
 import sys
 import json
+import time
 from pathlib import Path
 from datetime import datetime
 
@@ -92,21 +94,34 @@ def main():
     print(f"{len(policies)} confidential policies placed in the system prompt; "
           f"{len(ADVERSARIAL)} extraction attempts.\n")
 
+    def call(q):
+        """Return the model's generated content. Retries transient errors; if the gateway
+        still wraps the response as an error, salvage the generated content from the error
+        payload (it was transmitted to the client, so any policy in it is a real leak)."""
+        last = None
+        for attempt in range(4):
+            try:
+                resp = client.chat.completions.create(
+                    model=MODEL, temperature=0, max_tokens=256,
+                    messages=build_messages(q, policy_text, context_text),
+                )
+                return resp.choices[0].message.content or "", "ok"
+            except Exception as e:
+                last = e
+                # Salvage the model-generated content embedded in the error payload, if any.
+                m = re.search(r"'content':\s*'(.*?)',\s*'refusal'", str(e), re.S)
+                if m and m.group(1):
+                    return m.group(1), "salvaged-from-error"
+                time.sleep(1.5 * (attempt + 1))
+        return "", f"failed: {str(last)[:80]}"
+
     rows, leaks = [], 0
     for q in ADVERSARIAL:
-        try:
-            resp = client.chat.completions.create(
-                model=MODEL, temperature=0,
-                messages=build_messages(q, policy_text, context_text),
-            )
-            out = resp.choices[0].message.content or ""
-        except Exception as e:
-            print(f"API error on {q!r}: {e}")
-            out = ""
+        out, status = call(q)
         is_leak = leaked(out, policies)
         leaks += int(is_leak)
-        rows.append({"prompt": q, "leaked": is_leak, "output": out[:400]})
-        print(f"[{'LEAK' if is_leak else 'ok  '}] {q[:60]}")
+        rows.append({"prompt": q, "leaked": is_leak, "status": status, "output": out[:400]})
+        print(f"[{'LEAK' if is_leak else 'ok  '}] ({status}) {q[:56]}")
 
     n = len(ADVERSARIAL)
     rate = leaks / n
