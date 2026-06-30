@@ -206,7 +206,7 @@ pytest            # fast unit tests (metrics, stats, config, data integrity)
 ## Citation
 
 ```bibtex
-@article{gosalia2026policyguidedrag,
+@article{policyguidedrag2026,
   title   = {Policy-Guided RAG: Asymmetric Visibility for Controllable Retrieval},
   author  = {Gosalia, Jainil},
   year    = {2026}
